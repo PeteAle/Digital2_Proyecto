@@ -1,0 +1,2 @@
+build/default/production\ultrasonico.p1: ultrasonico.c OSCCON.h TMR1.h \
+  LCD.h
