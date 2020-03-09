@@ -2761,14 +2761,26 @@ void tmr1_Interrupt(unsigned char tmr1_Int);
 
 # 1 "./LCD.h" 1
 # 36 "./LCD.h"
-void delay_1ms(void);
 void lcd8_init(void);
 void lcd8_cmd(unsigned char cmd);
 void lcd8_write(unsigned int dat);
 void lcd8_dispString(char *value);
 void lcd8_dispChar(char val_num);
 void lcd8_setCursor(unsigned char fila, unsigned char columna);
+void delay_1ms(void);
 # 37 "ultrasonico.c" 2
+
+# 1 "./I2C.h" 1
+# 40 "./I2C.h"
+void i2c_master_init(unsigned long c);
+void i2c_masterWait(void);
+void i2c_masterStart(void);
+void i2c_masterRStart(void);
+void i2c_masterStop(void);
+void i2c_masterWrite(unsigned int data);
+unsigned short i2c_masterRead(unsigned short a);
+void i2c_slave_init(short address);
+# 38 "ultrasonico.c" 2
 
 
 
@@ -2776,11 +2788,36 @@ void lcd8_setCursor(unsigned char fila, unsigned char columna);
 
 
 int distancia = 0;
+uint8_t x = 0, z = 0;
 
 void setup(void);
 
 void __attribute__((picinterrupt(("")))) ISR(){
 
+    if (PIR1bits.SSPIF == 1){
+            SSPCONbits.CKP = 0;
+            if (SSPCONbits.WCOL == 1 || SSPCONbits.SSPOV == 1){
+                x = SSPBUF;
+                SSPCONbits.WCOL = 0;
+                SSPCONbits.SSPOV = 0;
+                SSPCONbits.CKP = 1;
+            }
+            if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW){
+                x = SSPBUF;
+                while(!SSPSTATbits.BF);
+                z = SSPBUF;
+                SSPCONbits.CKP = 1;
+            }
+            else if (!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
+                x = SSPBUF;
+                SSPSTATbits.BF = 0;
+                SSPBUF = distancia;
+                SSPCONbits.CKP = 1;
+                _delay((unsigned long)((300)*(4000000/4000000.0)));
+                while(SSPSTATbits.BF);
+            }
+            PIR1bits.SSPIF = 0;
+        }
 }
 
 void main(void) {
@@ -2790,6 +2827,7 @@ void main(void) {
     tmr1_Init();
     tmr1_Prescaler(1);
     tmr1_Interrupt(0);
+    i2c_slave_init(0x10);
     while(1){
 
         TMR1H = 0;
@@ -2798,34 +2836,14 @@ void main(void) {
         _delay((unsigned long)((10)*(4000000/4000000.0)));
         PORTBbits.RB0 = 0;
         while(!PORTBbits.RB1);
-        TMR1ON = 1;
+        T1CONbits.TMR1ON = 1;
         while(PORTBbits.RB1);
-        TMR1ON = 0;
+        T1CONbits.TMR1ON = 0;
 
+        (INTCONbits.GIE = 0);
         distancia = (TMR1L | (TMR1H<<8));
-        distancia = distancia/29.412;
-        distancia = distancia + 1;
-
-        lcd8_setCursor(1,1);
-        delay_1ms();
-        lcd8_dispString("d:");
-        delay_1ms();
-        lcd8_setCursor(2,3);
-        delay_1ms();
-        lcd8_dispChar(distancia%10);
-        delay_1ms();
-        lcd8_setCursor(2,2);
-        delay_1ms();
-        distancia = distancia/10;
-        lcd8_dispChar(distancia%10);
-        delay_1ms();
-        lcd8_setCursor(2,1);
-        delay_1ms();
-        distancia = distancia/10;
-        lcd8_dispChar(distancia%10);
-        lcd8_setCursor(2,4);
-        delay_1ms();
-        lcd8_dispString("cm");
+        (INTCONbits.GIE = 1);
+# 120 "ultrasonico.c"
     }
     return;
 }

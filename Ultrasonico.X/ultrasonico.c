@@ -35,17 +35,43 @@
 #include "OSCCON.h"
 #include "TMR1.h"
 #include "LCD.h"
+#include "I2C.h"
 
 #define Trigger PORTBbits.RB0
 #define Echo PORTBbits.RB1
 #define _XTAL_FREQ 4000000
 
 int distancia = 0;
+uint8_t x = 0, z = 0;
 
 void setup(void);
 
 void __interrupt() ISR(){
-    
+    //-------------------- Enviar por I2C -------------------------------------
+    if (PIR1bits.SSPIF == 1){
+            SSPCONbits.CKP = 0;
+            if (SSPCONbits.WCOL == 1 || SSPCONbits.SSPOV == 1){
+                x = SSPBUF;
+                SSPCONbits.WCOL = 0;
+                SSPCONbits.SSPOV = 0;
+                SSPCONbits.CKP = 1;
+            }
+            if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW){
+                x = SSPBUF;
+                while(!SSPSTATbits.BF);
+                z = SSPBUF;
+                SSPCONbits.CKP = 1;
+            }
+            else if (!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
+                x = SSPBUF;
+                SSPSTATbits.BF = 0;
+                SSPBUF = distancia;
+                SSPCONbits.CKP = 1;
+                __delay_us(300);
+                while(SSPSTATbits.BF);
+            }
+            PIR1bits.SSPIF = 0;
+        }
 }
 
 void main(void) {
@@ -55,42 +81,40 @@ void main(void) {
     tmr1_Init();
     tmr1_Prescaler(1);
     tmr1_Interrupt(0);
+    i2c_slave_init(0x10);
     while(1){
-        //------------------- Obtener valor de US -----------------------------
-        TMR1H = 0;                //Sets the Initial Value of Timer
-        TMR1L = 0;                //Sets the Initial Value of Timer
-        Trigger = 1;                  //TRIGGER HIGH
-        __delay_us(10);           //10uS Delay 
-        Trigger = 0;                  //TRIGGER LOW
-        while(!Echo);              //Waiting for Echo
-        TMR1ON = 1;               //Timer Starts
-        while(Echo);               //Waiting for Echo goes LOW
-        TMR1ON = 0;               //Timer Stops
+        //------------------- Obtener valor del ultrasónico -------------------
+        TMR1H = 0;                // Establece TMR1H como 0.
+        TMR1L = 0;                // Establece TMR1L como 0.
+        Trigger = 1;              // Habilitar el trigger para enciar señal
+        __delay_us(10);           // 10uS Delay 
+        Trigger = 0;              // TRIGGER LOW para parar señal
+        while(!Echo);             // Esperando recibir el ECHO (señal rebotada)
+        T1CONbits.TMR1ON = 1;               // Inicia timer
+        while(Echo);              // Esperar que ya no se reciba un ECHO.
+        T1CONbits.TMR1ON = 0;               // Para el timer
         //------------------- Cálculo de distancia ----------------------------
         distancia = (TMR1L | (TMR1H<<8));
-        distancia = distancia/29.412;
-        distancia = distancia + 1;
-        //-------------------- Desplegar en LCD -------------------------------
-        lcd8_setCursor(1,1);
-        delay_1ms();
-        lcd8_dispString("d:");
-        delay_1ms();
-        lcd8_setCursor(2,3);
-        delay_1ms();
-        lcd8_dispChar(distancia%10);
-        delay_1ms();
-        lcd8_setCursor(2,2);
-        delay_1ms();
-        distancia = distancia/10;
-        lcd8_dispChar(distancia%10);
-        delay_1ms();
-        lcd8_setCursor(2,1);
-        delay_1ms();
-        distancia = distancia/10;
-        lcd8_dispChar(distancia%10);
-        lcd8_setCursor(2,4);
-        delay_1ms();
-        lcd8_dispString("cm");
+//        distancia = distancia/29.412;
+//        distancia = distancia + 1;
+//        //-------------------- Desplegar en LCD -------------------------------
+//        lcd8_setCursor(1,0);
+//        delay_1ms();
+//        lcd8_dispString("d:");
+//        delay_1ms();
+//        lcd8_setCursor(1,3);
+//        delay_1ms();
+//        lcd8_dispChar(distancia%10);
+//        delay_1ms();
+//        lcd8_setCursor(1,2);
+//        delay_1ms();
+//        distancia = distancia/10;
+//        lcd8_dispChar(distancia%10);
+//        delay_1ms();
+//        lcd8_setCursor(1,4);
+//        delay_1ms();
+//        lcd8_dispString("cm");
+//        delay_1ms();
     }
     return;
 }

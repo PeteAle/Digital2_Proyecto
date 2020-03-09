@@ -1,2 +1,6 @@
-build/default/production\ultrasonico.p1: ultrasonico.c OSCCON.h TMR1.h \
-  LCD.h
+build/default/production/ultrasonico.p1:  \
+ultrasonico.c  \
+OSCCON.h  \
+TMR1.h  \
+LCD.h  \
+I2C.h 

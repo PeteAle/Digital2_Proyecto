@@ -6,10 +6,10 @@
                    projectFiles="true">
       <itemPath>ADC.h</itemPath>
       <itemPath>OSCCON.h</itemPath>
-      <itemPath>UART.h</itemPath>
       <itemPath>TMR1.h</itemPath>
-      <itemPath>LCD.c</itemPath>
       <itemPath>LCD.h</itemPath>
+      <itemPath>I2C.c</itemPath>
+      <itemPath>I2C.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -21,8 +21,8 @@
       <itemPath>ultrasonico.c</itemPath>
       <itemPath>ADC.c</itemPath>
       <itemPath>OSCCON.c</itemPath>
-      <itemPath>UART.c</itemPath>
       <itemPath>TMR1.c</itemPath>
+      <itemPath>LCD.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

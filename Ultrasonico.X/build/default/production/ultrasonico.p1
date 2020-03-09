@@ -1,15 +1,83 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [t ~ __interrupt . k ]
 [t T1 __interrupt ]
+"543 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 543:     struct {
+[s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S19 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF ]
+"542
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 542: typedef union {
+[u S18 `S19 1 ]
+[n S18 . . ]
+"553
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 553: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x00C)));
+[v _PIR1bits `VS18 ~T0 @X0 0 e@12 ]
+"856
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 856:     struct {
+[s S30 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S30 . SSPM CKP SSPEN SSPOV WCOL ]
+"863
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 863:     struct {
+[s S31 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S31 . SSPM0 SSPM1 SSPM2 SSPM3 ]
+"855
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 855: typedef union {
+[u S29 `S30 1 `S31 1 ]
+[n S29 . . . ]
+"870
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 870: extern volatile SSPCONbits_t SSPCONbits __attribute__((address(0x014)));
+[v _SSPCONbits `VS29 ~T0 @X0 0 e@20 ]
+"843
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 843: extern volatile unsigned char SSPBUF __attribute__((address(0x013)));
+[v _SSPBUF `Vuc ~T0 @X0 0 e@19 ]
+"2183
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 2183:     struct {
+[s S82 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S82 . BF UA R_nW S P D_nA CKE SMP ]
+"2193
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 2193:     struct {
+[s S83 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S83 . . R . D ]
+"2199
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 2199:     struct {
+[s S84 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S84 . . I2C_READ I2C_START I2C_STOP I2C_DATA ]
+"2206
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 2206:     struct {
+[s S85 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S85 . . nW . nA ]
+"2212
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 2212:     struct {
+[s S86 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S86 . . nWRITE . nADDRESS ]
+"2218
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 2218:     struct {
+[s S87 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S87 . . R_W . D_A ]
+"2224
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 2224:     struct {
+[s S88 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S88 . . READ_WRITE . DATA_ADDRESS ]
+"2182
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 2182: typedef union {
+[u S81 `S82 1 `S83 1 `S84 1 `S85 1 `S86 1 `S87 1 `S88 1 ]
+[n S81 . . . . . . . . ]
+"2231
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 2231: extern volatile SSPSTATbits_t SSPSTATbits __attribute__((address(0x094)));
+[v _SSPSTATbits `VS81 ~T0 @X0 0 e@148 ]
+[v F1256 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
+[v __delay `JF1256 ~T0 @X0 0 e ]
+[p i __delay ]
 [p mainexit ]
-"45 ultrasonico.c
-[; ;ultrasonico.c: 45: void setup(void);
+"47 ultrasonico.c
+[; ;ultrasonico.c: 47: void setup(void);
 [v _setup `(v ~T0 @X0 0 ef ]
 "36 ./OSCCON.h
 [; ;./OSCCON.h: 36: unsigned char oscInit(unsigned char freq);
 [v _oscInit `(uc ~T0 @X0 0 ef1`uc ]
-"37 ./LCD.h
-[; ;./LCD.h: 37: void lcd8_init(void);
+"36 ./LCD.h
+[; ;./LCD.h: 36: void lcd8_init(void);
 [v _lcd8_init `(v ~T0 @X0 0 ef ]
 "36 ./TMR1.h
 [; ;./TMR1.h: 36: void tmr1_Init(void);
@@ -20,6 +88,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "38
 [; ;./TMR1.h: 38: void tmr1_Interrupt(unsigned char tmr1_Int);
 [v _tmr1_Interrupt `(v ~T0 @X0 0 ef1`uc ]
+"47 ./I2C.h
+[; ;./I2C.h: 47: void i2c_slave_init(short address);
+[v _i2c_slave_init `(v ~T0 @X0 0 ef1`s ]
 "664 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 664: extern volatile unsigned char TMR1H __attribute__((address(0x00F)));
 [v _TMR1H `Vuc ~T0 @X0 0 e@15 ]
@@ -37,26 +108,41 @@ Version 4.0 HI-TECH Software Intermediate Code
 "245
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 245: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x006)));
 [v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
-[v F1256 `(v ~T0 @X0 1 tf1`ul ]
-"92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
-[v __delay `JF1256 ~T0 @X0 0 e ]
-[p i __delay ]
-"4376 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 4376: extern volatile __bit TMR1ON __attribute__((address(0x80)));
-[v _TMR1ON `Vb ~T0 @X0 0 e@128 ]
-"42 ./LCD.h
-[; ;./LCD.h: 42: void lcd8_setCursor(unsigned char fila, unsigned char columna);
-[v _lcd8_setCursor `(v ~T0 @X0 0 ef2`uc`uc ]
-"36
-[; ;./LCD.h: 36: void delay_1ms(void);
-[v _delay_1ms `(v ~T0 @X0 0 ef ]
-"40
-[; ;./LCD.h: 40: void lcd8_dispString(char *value);
-[v _lcd8_dispString `(v ~T0 @X0 0 ef1`*uc ]
-"41
-[; ;./LCD.h: 41: void lcd8_dispChar(char val_num);
-[v _lcd8_dispChar `(v ~T0 @X0 0 ef1`uc ]
-"1484 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
+"677
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 677:     struct {
+[s S23 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S23 . TMR1ON TMR1CS nT1SYNC T1OSCEN T1CKPS TMR1GE T1GINV ]
+"686
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 686:     struct {
+[s S24 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S24 . . T1INSYNC . T1CKPS0 T1CKPS1 . T1GIV ]
+"695
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 695:     struct {
+[s S25 :2 `uc 1 :1 `uc 1 ]
+[n S25 . . T1SYNC ]
+"676
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 676: typedef union {
+[u S22 `S23 1 `S24 1 `S25 1 ]
+[n S22 . . . . ]
+"700
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 700: extern volatile T1CONbits_t T1CONbits __attribute__((address(0x010)));
+[v _T1CONbits `VS22 ~T0 @X0 0 e@16 ]
+"465
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 465:     struct {
+[s S16 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S16 . RBIF INTF T0IF RBIE INTE T0IE PEIE GIE ]
+"475
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 475:     struct {
+[s S17 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S17 . . TMR0IF . TMR0IE ]
+"464
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 464: typedef union {
+[u S15 `S16 1 `S17 1 ]
+[n S15 . . . ]
+"482
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 482: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
+[v _INTCONbits `VS15 ~T0 @X0 0 e@11 ]
+"1484
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 1484:     struct {
 [s S55 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S55 . TRISB0 TRISB1 TRISB2 TRISB3 TRISB4 TRISB5 TRISB6 TRISB7 ]
@@ -340,205 +426,246 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"43 ultrasonico.c
-[; ;ultrasonico.c: 43: int distancia = 0;
+"44 ultrasonico.c
+[; ;ultrasonico.c: 44: int distancia = 0;
 [v _distancia `i ~T0 @X0 1 e ]
 [i _distancia
 -> 0 `i
 ]
+"45
+[; ;ultrasonico.c: 45: uint8_t x = 0, z = 0;
+[v _x `uc ~T0 @X0 1 e ]
+[i _x
+-> -> 0 `i `uc
+]
+[v _z `uc ~T0 @X0 1 e ]
+[i _z
+-> -> 0 `i `uc
+]
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-"47
-[; ;ultrasonico.c: 47: void __attribute__((picinterrupt(("")))) ISR(){
+"49
+[; ;ultrasonico.c: 49: void __attribute__((picinterrupt(("")))) ISR(){
 [v _ISR `(v ~T1 @X0 1 ef ]
 {
 [e :U _ISR ]
 [f ]
-"49
-[; ;ultrasonico.c: 49: }
+"51
+[; ;ultrasonico.c: 51:     if (PIR1bits.SSPIF == 1){
+[e $ ! == -> . . _PIR1bits 0 3 `i -> 1 `i 140  ]
+{
+"52
+[; ;ultrasonico.c: 52:             SSPCONbits.CKP = 0;
+[e = . . _SSPCONbits 0 1 -> -> 0 `i `uc ]
+"53
+[; ;ultrasonico.c: 53:             if (SSPCONbits.WCOL == 1 || SSPCONbits.SSPOV == 1){
+[e $ ! || == -> . . _SSPCONbits 0 4 `i -> 1 `i == -> . . _SSPCONbits 0 3 `i -> 1 `i 141  ]
+{
+"54
+[; ;ultrasonico.c: 54:                 x = SSPBUF;
+[e = _x _SSPBUF ]
+"55
+[; ;ultrasonico.c: 55:                 SSPCONbits.WCOL = 0;
+[e = . . _SSPCONbits 0 4 -> -> 0 `i `uc ]
+"56
+[; ;ultrasonico.c: 56:                 SSPCONbits.SSPOV = 0;
+[e = . . _SSPCONbits 0 3 -> -> 0 `i `uc ]
+"57
+[; ;ultrasonico.c: 57:                 SSPCONbits.CKP = 1;
+[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
+"58
+[; ;ultrasonico.c: 58:             }
+}
+[e :U 141 ]
+"59
+[; ;ultrasonico.c: 59:             if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW){
+[e $ ! && ! != -> . . _SSPSTATbits 0 5 `i -> 0 `i ! != -> . . _SSPSTATbits 0 2 `i -> 0 `i 142  ]
+{
+"60
+[; ;ultrasonico.c: 60:                 x = SSPBUF;
+[e = _x _SSPBUF ]
+"61
+[; ;ultrasonico.c: 61:                 while(!SSPSTATbits.BF);
+[e $U 143  ]
+[e :U 144 ]
+[e :U 143 ]
+[e $ ! != -> . . _SSPSTATbits 0 0 `i -> 0 `i 144  ]
+[e :U 145 ]
+"62
+[; ;ultrasonico.c: 62:                 z = SSPBUF;
+[e = _z _SSPBUF ]
+"63
+[; ;ultrasonico.c: 63:                 SSPCONbits.CKP = 1;
+[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
+"64
+[; ;ultrasonico.c: 64:             }
+}
+[e $U 146  ]
+"65
+[; ;ultrasonico.c: 65:             else if (!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
+[e :U 142 ]
+[e $ ! && ! != -> . . _SSPSTATbits 0 5 `i -> 0 `i != -> . . _SSPSTATbits 0 2 `i -> 0 `i 147  ]
+{
+"66
+[; ;ultrasonico.c: 66:                 x = SSPBUF;
+[e = _x _SSPBUF ]
+"67
+[; ;ultrasonico.c: 67:                 SSPSTATbits.BF = 0;
+[e = . . _SSPSTATbits 0 0 -> -> 0 `i `uc ]
+"68
+[; ;ultrasonico.c: 68:                 SSPBUF = distancia;
+[e = _SSPBUF -> _distancia `uc ]
+"69
+[; ;ultrasonico.c: 69:                 SSPCONbits.CKP = 1;
+[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
+"70
+[; ;ultrasonico.c: 70:                 _delay((unsigned long)((300)*(4000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"71
+[; ;ultrasonico.c: 71:                 while(SSPSTATbits.BF);
+[e $U 148  ]
+[e :U 149 ]
+[e :U 148 ]
+[e $ != -> . . _SSPSTATbits 0 0 `i -> 0 `i 149  ]
+[e :U 150 ]
+"72
+[; ;ultrasonico.c: 72:             }
+}
+[e :U 147 ]
+[e :U 146 ]
+"73
+[; ;ultrasonico.c: 73:             PIR1bits.SSPIF = 0;
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+"74
+[; ;ultrasonico.c: 74:         }
+}
+[e :U 140 ]
+"75
+[; ;ultrasonico.c: 75: }
 [e :UE 139 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"51
-[; ;ultrasonico.c: 51: void main(void) {
+"77
+[; ;ultrasonico.c: 77: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"52
-[; ;ultrasonico.c: 52:     setup();
-[e ( _setup ..  ]
-"53
-[; ;ultrasonico.c: 53:     oscInit(1);
-[e ( _oscInit (1 -> -> 1 `i `uc ]
-"54
-[; ;ultrasonico.c: 54:     lcd8_init();
-[e ( _lcd8_init ..  ]
-"55
-[; ;ultrasonico.c: 55:     tmr1_Init();
-[e ( _tmr1_Init ..  ]
-"56
-[; ;ultrasonico.c: 56:     tmr1_Prescaler(1);
-[e ( _tmr1_Prescaler (1 -> -> 1 `i `uc ]
-"57
-[; ;ultrasonico.c: 57:     tmr1_Interrupt(0);
-[e ( _tmr1_Interrupt (1 -> -> 0 `i `uc ]
-"58
-[; ;ultrasonico.c: 58:     while(1){
-[e :U 142 ]
-{
-"60
-[; ;ultrasonico.c: 60:         TMR1H = 0;
-[e = _TMR1H -> -> 0 `i `uc ]
-"61
-[; ;ultrasonico.c: 61:         TMR1L = 0;
-[e = _TMR1L -> -> 0 `i `uc ]
-"62
-[; ;ultrasonico.c: 62:         PORTBbits.RB0 = 1;
-[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
-"63
-[; ;ultrasonico.c: 63:         _delay((unsigned long)((10)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"64
-[; ;ultrasonico.c: 64:         PORTBbits.RB0 = 0;
-[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
-"65
-[; ;ultrasonico.c: 65:         while(!PORTBbits.RB1);
-[e $U 144  ]
-[e :U 145 ]
-[e :U 144 ]
-[e $ ! != -> . . _PORTBbits 0 1 `i -> 0 `i 145  ]
-[e :U 146 ]
-"66
-[; ;ultrasonico.c: 66:         TMR1ON = 1;
-[e = _TMR1ON -> -> 1 `i `b ]
-"67
-[; ;ultrasonico.c: 67:         while(PORTBbits.RB1);
-[e $U 147  ]
-[e :U 148 ]
-[e :U 147 ]
-[e $ != -> . . _PORTBbits 0 1 `i -> 0 `i 148  ]
-[e :U 149 ]
-"68
-[; ;ultrasonico.c: 68:         TMR1ON = 0;
-[e = _TMR1ON -> -> 0 `i `b ]
-"70
-[; ;ultrasonico.c: 70:         distancia = (TMR1L | (TMR1H<<8));
-[e = _distancia | -> _TMR1L `i << -> _TMR1H `i -> 8 `i ]
-"71
-[; ;ultrasonico.c: 71:         distancia = distancia/29.412;
-[e = _distancia -> / -> _distancia `d .29.412 `i ]
-"72
-[; ;ultrasonico.c: 72:         distancia = distancia + 1;
-[e = _distancia + _distancia -> 1 `i ]
-"74
-[; ;ultrasonico.c: 74:         lcd8_setCursor(1,1);
-[e ( _lcd8_setCursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"75
-[; ;ultrasonico.c: 75:         delay_1ms();
-[e ( _delay_1ms ..  ]
-"76
-[; ;ultrasonico.c: 76:         lcd8_dispString("d:");
-[e ( _lcd8_dispString (1 :s 1C ]
-"77
-[; ;ultrasonico.c: 77:         delay_1ms();
-[e ( _delay_1ms ..  ]
 "78
-[; ;ultrasonico.c: 78:         lcd8_setCursor(2,3);
-[e ( _lcd8_setCursor (2 , -> -> 2 `i `uc -> -> 3 `i `uc ]
+[; ;ultrasonico.c: 78:     setup();
+[e ( _setup ..  ]
 "79
-[; ;ultrasonico.c: 79:         delay_1ms();
-[e ( _delay_1ms ..  ]
+[; ;ultrasonico.c: 79:     oscInit(1);
+[e ( _oscInit (1 -> -> 1 `i `uc ]
 "80
-[; ;ultrasonico.c: 80:         lcd8_dispChar(distancia%10);
-[e ( _lcd8_dispChar (1 -> % _distancia -> 10 `i `uc ]
+[; ;ultrasonico.c: 80:     lcd8_init();
+[e ( _lcd8_init ..  ]
 "81
-[; ;ultrasonico.c: 81:         delay_1ms();
-[e ( _delay_1ms ..  ]
+[; ;ultrasonico.c: 81:     tmr1_Init();
+[e ( _tmr1_Init ..  ]
 "82
-[; ;ultrasonico.c: 82:         lcd8_setCursor(2,2);
-[e ( _lcd8_setCursor (2 , -> -> 2 `i `uc -> -> 2 `i `uc ]
+[; ;ultrasonico.c: 82:     tmr1_Prescaler(1);
+[e ( _tmr1_Prescaler (1 -> -> 1 `i `uc ]
 "83
-[; ;ultrasonico.c: 83:         delay_1ms();
-[e ( _delay_1ms ..  ]
+[; ;ultrasonico.c: 83:     tmr1_Interrupt(0);
+[e ( _tmr1_Interrupt (1 -> -> 0 `i `uc ]
 "84
-[; ;ultrasonico.c: 84:         distancia = distancia/10;
-[e = _distancia / _distancia -> 10 `i ]
+[; ;ultrasonico.c: 84:     i2c_slave_init(0x10);
+[e ( _i2c_slave_init (1 -> -> 16 `i `s ]
 "85
-[; ;ultrasonico.c: 85:         lcd8_dispChar(distancia%10);
-[e ( _lcd8_dispChar (1 -> % _distancia -> 10 `i `uc ]
-"86
-[; ;ultrasonico.c: 86:         delay_1ms();
-[e ( _delay_1ms ..  ]
+[; ;ultrasonico.c: 85:     while(1){
+[e :U 153 ]
+{
 "87
-[; ;ultrasonico.c: 87:         lcd8_setCursor(2,1);
-[e ( _lcd8_setCursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+[; ;ultrasonico.c: 87:         TMR1H = 0;
+[e = _TMR1H -> -> 0 `i `uc ]
 "88
-[; ;ultrasonico.c: 88:         delay_1ms();
-[e ( _delay_1ms ..  ]
+[; ;ultrasonico.c: 88:         TMR1L = 0;
+[e = _TMR1L -> -> 0 `i `uc ]
 "89
-[; ;ultrasonico.c: 89:         distancia = distancia/10;
-[e = _distancia / _distancia -> 10 `i ]
+[; ;ultrasonico.c: 89:         PORTBbits.RB0 = 1;
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
 "90
-[; ;ultrasonico.c: 90:         lcd8_dispChar(distancia%10);
-[e ( _lcd8_dispChar (1 -> % _distancia -> 10 `i `uc ]
+[; ;ultrasonico.c: 90:         _delay((unsigned long)((10)*(4000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
 "91
-[; ;ultrasonico.c: 91:         lcd8_setCursor(2,4);
-[e ( _lcd8_setCursor (2 , -> -> 2 `i `uc -> -> 4 `i `uc ]
+[; ;ultrasonico.c: 91:         PORTBbits.RB0 = 0;
+[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
 "92
-[; ;ultrasonico.c: 92:         delay_1ms();
-[e ( _delay_1ms ..  ]
+[; ;ultrasonico.c: 92:         while(!PORTBbits.RB1);
+[e $U 155  ]
+[e :U 156 ]
+[e :U 155 ]
+[e $ ! != -> . . _PORTBbits 0 1 `i -> 0 `i 156  ]
+[e :U 157 ]
 "93
-[; ;ultrasonico.c: 93:         lcd8_dispString("cm");
-[e ( _lcd8_dispString (1 :s 2C ]
+[; ;ultrasonico.c: 93:         T1CONbits.TMR1ON = 1;
+[e = . . _T1CONbits 0 0 -> -> 1 `i `uc ]
 "94
-[; ;ultrasonico.c: 94:     }
-}
-[e :U 141 ]
-[e $U 142  ]
-[e :U 143 ]
+[; ;ultrasonico.c: 94:         while(PORTBbits.RB1);
+[e $U 158  ]
+[e :U 159 ]
+[e :U 158 ]
+[e $ != -> . . _PORTBbits 0 1 `i -> 0 `i 159  ]
+[e :U 160 ]
 "95
-[; ;ultrasonico.c: 95:     return;
-[e $UE 140  ]
-"96
-[; ;ultrasonico.c: 96: }
-[e :UE 140 ]
-}
+[; ;ultrasonico.c: 95:         T1CONbits.TMR1ON = 0;
+[e = . . _T1CONbits 0 0 -> -> 0 `i `uc ]
+"97
+[; ;ultrasonico.c: 97:         (INTCONbits.GIE = 0);
+[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
 "98
-[; ;ultrasonico.c: 98: void setup(void){
+[; ;ultrasonico.c: 98:         distancia = (TMR1L | (TMR1H<<8));
+[e = _distancia | -> _TMR1L `i << -> _TMR1H `i -> 8 `i ]
+"99
+[; ;ultrasonico.c: 99:         (INTCONbits.GIE = 1);
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+"120
+[; ;ultrasonico.c: 120:     }
+}
+[e :U 152 ]
+[e $U 153  ]
+[e :U 154 ]
+"121
+[; ;ultrasonico.c: 121:     return;
+[e $UE 151  ]
+"122
+[; ;ultrasonico.c: 122: }
+[e :UE 151 ]
+}
+"124
+[; ;ultrasonico.c: 124: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"99
-[; ;ultrasonico.c: 99:     PORTBbits.RB0 = 0;
+"125
+[; ;ultrasonico.c: 125:     PORTBbits.RB0 = 0;
 [e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
-"100
-[; ;ultrasonico.c: 100:     PORTBbits.RB1 = 0;
+"126
+[; ;ultrasonico.c: 126:     PORTBbits.RB1 = 0;
 [e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
-"101
-[; ;ultrasonico.c: 101:     TRISBbits.TRISB0 = 0;
+"127
+[; ;ultrasonico.c: 127:     TRISBbits.TRISB0 = 0;
 [e = . . _TRISBbits 0 0 -> -> 0 `i `uc ]
-"102
-[; ;ultrasonico.c: 102:     TRISBbits.TRISB1 = 1;
+"128
+[; ;ultrasonico.c: 128:     TRISBbits.TRISB1 = 1;
 [e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
-"103
-[; ;ultrasonico.c: 103:     TRISA = 0x00;
+"129
+[; ;ultrasonico.c: 129:     TRISA = 0x00;
 [e = _TRISA -> -> 0 `i `uc ]
-"104
-[; ;ultrasonico.c: 104:     PORTA = 0x00;
+"130
+[; ;ultrasonico.c: 130:     PORTA = 0x00;
 [e = _PORTA -> -> 0 `i `uc ]
-"105
-[; ;ultrasonico.c: 105:     ANSEL = 0;
+"131
+[; ;ultrasonico.c: 131:     ANSEL = 0;
 [e = _ANSEL -> -> 0 `i `uc ]
-"106
-[; ;ultrasonico.c: 106:     ANSELH = 0;
+"132
+[; ;ultrasonico.c: 132:     ANSELH = 0;
 [e = _ANSELH -> -> 0 `i `uc ]
-"107
-[; ;ultrasonico.c: 107:     TRISE = 0;
+"133
+[; ;ultrasonico.c: 133:     TRISE = 0;
 [e = _TRISE -> -> 0 `i `uc ]
-"108
-[; ;ultrasonico.c: 108: }
-[e :UE 150 ]
+"134
+[; ;ultrasonico.c: 134: }
+[e :UE 161 ]
 }
-[a 2C 99 109 0 ]
-[a 1C 100 58 0 ]
