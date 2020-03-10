@@ -35,10 +35,15 @@
 #include "LCD.h"
 #include "OSCCON.h"
 
+#define Trigger PORTBbits.RB0
+#define Echo PORTBbits.RB1
+
 #define _XTAL_FREQ 4000000
 
-uint16_t ultrasonico = 0;
+int distancia = 0;
+uint16_t fuerza = 0, velocidad = 0, angulo = 0;
 uint16_t usCentenas = 0, usDecenas = 0, usUnidades = 0;
+uint8_t fCentenas = 0, fDecenas = 0, fUnidades = 0;
 
 void setup(void);
 
@@ -47,16 +52,64 @@ void main(void) {
     oscInit(1);
     i2c_master_init(100000);    // Iniciar el I2C como master a 100 KHz.
     lcd8_init();                // Iniciar el LCD (DESPUÉS DE INICIAR I2C!!!)
+    T1CON= 0x10;
     while(1){
-        //--------------------- Lectura del ultrasónico -----------------------
+        //--------------------- Lectura del sensor de fuerza ------------------
+//        i2c_masterStart();
+//        i2c_masterWrite(0x10);
+//        i2c_masterWrite(0x01);
+//        i2c_masterStop();
+//        __delay_ms(1);
         i2c_masterStart();
         i2c_masterWrite(0x11);
-        ultrasonico = i2c_masterRead(0);
+        fuerza = i2c_masterRead(0);
         i2c_masterStop();
         __delay_ms(1);
+        //--------------------- Lectura de acelerómetro------------------------
+//        i2c_masterStart();
+//        i2c_masterWrite(0x10);
+//        i2c_masterWrite(0x02);
+//        i2c_masterStop();
+//        __delay_ms(1);
+//        i2c_masterStart();
+//        i2c_masterWrite(0x11);
+//        velocidad = i2c_masterRead(0);
+//        i2c_masterStop();
+//        __delay_ms(1);
+        //--------------------- Lectura de giroscopio -------------------------
+        //--------------------- Lectura de 
         //--------------------- Conversión del ultrasónico --------------------
-        ultrasonico = ultrasonico/29.412;
-        ultrasonico = ultrasonico + 1;
+        TMR1H = 0;                // Establece TMR1H como 0.
+        TMR1L = 0;                // Establece TMR1L como 0.
+        Trigger = 1;              // Habilitar el trigger para enciar señal
+        __delay_us(10);           // 10uS Delay 
+        Trigger = 0;              // TRIGGER LOW para parar señal
+        while(!Echo);             // Esperando recibir el ECHO (señal rebotada)
+        T1CONbits.TMR1ON = 1;               // Inicia timer
+        while(Echo);              // Esperar que ya no se reciba un ECHO.
+        T1CONbits.TMR1ON = 0;               // Para el timer
+        //------------------- Cálculo de distancia ----------------------------
+        distancia = (TMR1L | (TMR1H<<8));
+        distancia = distancia/29.412;
+        distancia = distancia + 1;
+        //-------------------- Funcionamiento de alarma ---------------------
+        if (distancia <= 100 && distancia >= 50){
+            PORTBbits.RB3 = 1;
+            __delay_ms(500);
+            PORTBbits.RB3 = 0;
+            __delay_ms(1000);
+        }
+        if (distancia <= 49 && distancia >= 21){
+            PORTBbits.RB3 = 1;
+            __delay_ms(500);
+            PORTBbits.RB3 = 0;
+            __delay_ms(500);
+        }
+        if (distancia < 20){
+            PORTBbits.RB3 = 1;            
+        }
+//        ultrasonico = ultrasonico/29.412;
+//        ultrasonico = ultrasonico + 1;
 //        ultrasonico = ultrasonico*100;
 //        usCentenas = ultrasonico/100;
 //        ultrasonico = ultrasonico - usCentenas*100;
@@ -65,20 +118,34 @@ void main(void) {
         //--------------------- Desplegar ultrasónico en LCD ------------------
         lcd8_setCursor(1,0);
         delay_1ms();
-        lcd8_dispString("d:");
-        delay_1ms();
-        lcd8_setCursor(1,3);
-        delay_1ms();
-        lcd8_dispChar(ultrasonico%10);
-        delay_1ms();
-        lcd8_setCursor(1,2);
-        delay_1ms();
-        ultrasonico = ultrasonico/10;
-        lcd8_dispChar(ultrasonico%10);
+        lcd8_dispString("f:");
         delay_1ms();
         lcd8_setCursor(1,4);
         delay_1ms();
-        lcd8_dispString("cm");
+        fCentenas = fuerza/100;
+        fuerza = fuerza - fCentenas*100;
+        fDecenas = fuerza/10;
+        fUnidades = fuerza - fDecenas*10;
+        lcd8_dispChar(fUnidades);
+        delay_1ms();
+        lcd8_setCursor(1,3);
+        delay_1ms();
+        lcd8_dispChar(fDecenas);
+        delay_1ms();
+        lcd8_setCursor(1,2);
+        delay_1ms();
+        lcd8_dispChar(fCentenas);
+        delay_1ms();
+//        lcd8_dispChar(fuerza%10);
+//        delay_1ms();
+//        lcd8_setCursor(1,2);
+//        delay_1ms();
+//        fuerza = fuerza/10;
+//        lcd8_dispChar(fuerza%10);
+//        delay_1ms();
+//        lcd8_setCursor(1,4);
+//        delay_1ms();
+//        lcd8_dispString("kg");
     }
     return;
 }

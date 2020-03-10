@@ -1,0 +1,324 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F887 ]
+[d frameptr 0 ]
+"12 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\ADC.c
+[v _adcSetup adcSetup `(v  1 e 1 0 ]
+"19
+[v _adcInterrupt adcInterrupt `(v  1 e 1 0 ]
+"32
+[v _analogInSel analogInSel `(uc  1 e 1 0 ]
+"128
+[v _adcFoscSel adcFoscSel `(uc  1 e 1 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"21 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\I2C.c
+[v _i2c_masterWait i2c_masterWait `(v  1 e 1 0 ]
+"62
+[v _i2c_slave_init i2c_slave_init `(v  1 e 1 0 ]
+"11 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\OSCCON.c
+[v _oscInit oscInit `(uc  1 e 1 0 ]
+"50 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\Sensores.c
+[v _ISR ISR `II(v  1 e 1 0 ]
+"103
+[v _main main `(v  1 e 1 0 ]
+"152
+[v _setup setup `(v  1 e 1 0 ]
+[s S209 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"482 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
+[s S218 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S223 . 1 `S209 1 . 1 0 `S218 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES223  1 e 1 @11 ]
+[s S102 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+]
+"553
+[u S110 . 1 `S102 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES110  1 e 1 @12 ]
+[s S338 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 TMR1CS 1 0 :1:1 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1GE 1 0 :1:6 
+`uc 1 T1GINV 1 0 :1:7 
+]
+"700
+[s S346 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T1INSYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 T1GIV 1 0 :1:7 
+]
+[s S354 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T1SYNC 1 0 :1:2 
+]
+[u S357 . 1 `S338 1 . 1 0 `S346 1 . 1 0 `S354 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES357  1 e 1 @16 ]
+"843
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
+"850
+[v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
+[s S452 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"870
+[s S458 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S463 . 1 `S452 1 . 1 0 `S458 1 . 1 0 ]
+[v _SSPCONbits SSPCONbits `VES463  1 e 1 @20 ]
+"1238
+[v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
+[s S22 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+`uc 1 ADCS 1 0 :2:6 
+]
+"1276
+[s S27 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 ADCS0 1 0 :1:6 
+`uc 1 ADCS1 1 0 :1:7 
+]
+[s S36 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S39 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S42 . 1 `S22 1 . 1 0 `S27 1 . 1 0 `S36 1 . 1 0 `S39 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES42  1 e 1 @31 ]
+[s S610 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"1495
+[u S619 . 1 `S610 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES619  1 e 1 @134 ]
+[s S165 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"1557
+[u S174 . 1 `S165 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES174  1 e 1 @135 ]
+[s S83 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSPIE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+]
+"1718
+[u S91 . 1 `S83 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES91  1 e 1 @140 ]
+[s S301 . 1 `uc 1 SCS 1 0 :1:0 
+`uc 1 LTS 1 0 :1:1 
+`uc 1 HTS 1 0 :1:2 
+`uc 1 OSTS 1 0 :1:3 
+`uc 1 IRCF 1 0 :3:4 
+]
+"1882
+[s S307 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 IRCF0 1 0 :1:4 
+`uc 1 IRCF1 1 0 :1:5 
+`uc 1 IRCF2 1 0 :1:6 
+]
+[u S312 . 1 `S301 1 . 1 0 `S307 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES312  1 e 1 @143 ]
+"1979
+[v _SSPCON2 SSPCON2 `VEuc  1 e 1 @145 ]
+[s S186 . 1 `uc 1 SEN 1 0 :1:0 
+`uc 1 RSEN 1 0 :1:1 
+`uc 1 PEN 1 0 :1:2 
+`uc 1 RCEN 1 0 :1:3 
+`uc 1 ACKEN 1 0 :1:4 
+`uc 1 ACKDT 1 0 :1:5 
+`uc 1 ACKSTAT 1 0 :1:6 
+`uc 1 GCEN 1 0 :1:7 
+]
+"1996
+[u S195 . 1 `S186 1 . 1 0 ]
+[v _SSPCON2bits SSPCON2bits `VES195  1 e 1 @145 ]
+"2048
+[v _SSPADD SSPADD `VEuc  1 e 1 @147 ]
+"2177
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
+[s S479 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+"2231
+[s S488 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S493 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DATA 1 0 :1:5 
+]
+[s S499 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S504 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S509 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S514 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+[u S519 . 1 `S479 1 . 1 0 `S488 1 . 1 0 `S493 1 . 1 0 `S499 1 . 1 0 `S504 1 . 1 0 `S509 1 . 1 0 `S514 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES519  1 e 1 @148 ]
+[s S68 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 VCFG0 1 0 :1:4 
+`uc 1 VCFG1 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 ADFM 1 0 :1:7 
+]
+"2991
+[u S74 . 1 `S68 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES74  1 e 1 @159 ]
+"3387
+[v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
+[s S632 . 1 `uc 1 ANS8 1 0 :1:0 
+`uc 1 ANS9 1 0 :1:1 
+`uc 1 ANS10 1 0 :1:2 
+`uc 1 ANS11 1 0 :1:3 
+`uc 1 ANS12 1 0 :1:4 
+`uc 1 ANS13 1 0 :1:5 
+]
+"3464
+[u S639 . 1 `S632 1 . 1 0 ]
+[v _ANSELHbits ANSELHbits `VES639  1 e 1 @393 ]
+"3566
+[v _ACKEN ACKEN `VEb  1 e 0 @1164 ]
+"43 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\Sensores.c
+[v _fuerza fuerza `i  1 e 2 0 ]
+"46
+[v _x x `uc  1 e 1 0 ]
+[v _z z `uc  1 e 1 0 ]
+"103
+[v _main main `(v  1 e 1 0 ]
+{
+"150
+} 0
+"152
+[v _setup setup `(v  1 e 1 0 ]
+{
+"161
+} 0
+"11 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\OSCCON.c
+[v _oscInit oscInit `(uc  1 e 1 0 ]
+{
+[v oscInit@freq freq `uc  1 a 1 wreg ]
+[v oscInit@freq freq `uc  1 a 1 wreg ]
+[v oscInit@freq freq `uc  1 a 1 2 ]
+"87
+} 0
+"62 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\I2C.c
+[v _i2c_slave_init i2c_slave_init `(v  1 e 1 0 ]
+{
+[v i2c_slave_init@address address `s  1 p 2 0 ]
+"73
+} 0
+"32 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\ADC.c
+[v _analogInSel analogInSel `(uc  1 e 1 0 ]
+{
+[v analogInSel@analogIn analogIn `uc  1 a 1 wreg ]
+[v analogInSel@analogIn analogIn `uc  1 a 1 wreg ]
+[v analogInSel@analogIn analogIn `uc  1 a 1 2 ]
+"120
+} 0
+"12
+[v _adcSetup adcSetup `(v  1 e 1 0 ]
+{
+"17
+} 0
+"19
+[v _adcInterrupt adcInterrupt `(v  1 e 1 0 ]
+{
+[v adcInterrupt@en en `uc  1 a 1 wreg ]
+[v adcInterrupt@en en `uc  1 a 1 wreg ]
+[v adcInterrupt@en en `uc  1 a 1 2 ]
+"30
+} 0
+"128
+[v _adcFoscSel adcFoscSel `(uc  1 e 1 0 ]
+{
+[v adcFoscSel@fosc fosc `uc  1 a 1 wreg ]
+[v adcFoscSel@fosc fosc `uc  1 a 1 wreg ]
+[v adcFoscSel@fosc fosc `uc  1 a 1 2 ]
+"144
+} 0
+"50 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\Sensores.c
+[v _ISR ISR `II(v  1 e 1 0 ]
+{
+"101
+} 0

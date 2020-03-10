@@ -2777,8 +2777,13 @@ unsigned char oscInit(unsigned char freq);
 
 
 
-uint16_t ultrasonico = 0;
+
+
+
+int distancia = 0;
+uint16_t fuerza = 0, velocidad = 0, angulo = 0;
 uint16_t usCentenas = 0, usDecenas = 0, usUnidades = 0;
+uint8_t fCentenas = 0, fDecenas = 0, fUnidades = 0;
 
 void setup(void);
 
@@ -2787,38 +2792,71 @@ void main(void) {
     oscInit(1);
     i2c_master_init(100000);
     lcd8_init();
+    T1CON= 0x10;
     while(1){
+
+
+
+
+
 
         i2c_masterStart();
         i2c_masterWrite(0x11);
-        ultrasonico = i2c_masterRead(0);
+        fuerza = i2c_masterRead(0);
         i2c_masterStop();
-        _delay((unsigned long)((1)*(4000000/4000.0)));
+        _delay((unsigned long)((200)*(4000000/4000.0)));
+# 82 "control_master.c"
+        TMR1H = 0;
+        TMR1L = 0;
+        PORTBbits.RB0 = 1;
+        _delay((unsigned long)((10)*(4000000/4000000.0)));
+        PORTBbits.RB0 = 0;
+        while(!PORTBbits.RB1);
+        T1CONbits.TMR1ON = 1;
+        while(PORTBbits.RB1);
+        T1CONbits.TMR1ON = 0;
 
-        ultrasonico = ultrasonico/29.412;
-        ultrasonico = ultrasonico + 1;
+        distancia = (TMR1L | (TMR1H<<8));
+        distancia = distancia/29.412;
+        distancia = distancia + 1;
 
-
-
-
-
-
+        if (distancia <= 100 && distancia >= 50){
+            PORTBbits.RB3 = 1;
+            _delay((unsigned long)((500)*(4000000/4000.0)));
+            PORTBbits.RB3 = 0;
+            _delay((unsigned long)((1000)*(4000000/4000.0)));
+        }
+        if (distancia <= 49 && distancia >= 21){
+            PORTBbits.RB3 = 1;
+            _delay((unsigned long)((500)*(4000000/4000.0)));
+            PORTBbits.RB3 = 0;
+            _delay((unsigned long)((500)*(4000000/4000.0)));
+        }
+        if (distancia < 20){
+            PORTBbits.RB3 = 1;
+        }
+# 119 "control_master.c"
         lcd8_setCursor(1,0);
         delay_1ms();
-        lcd8_dispString("d:");
-        delay_1ms();
-        lcd8_setCursor(1,3);
-        delay_1ms();
-        lcd8_dispChar(ultrasonico%10);
-        delay_1ms();
-        lcd8_setCursor(1,2);
-        delay_1ms();
-        ultrasonico = ultrasonico/10;
-        lcd8_dispChar(ultrasonico%10);
+        lcd8_dispString("f:");
         delay_1ms();
         lcd8_setCursor(1,4);
         delay_1ms();
-        lcd8_dispString("cm");
+        fCentenas = fuerza/100;
+        fuerza = fuerza - fCentenas*100;
+        fDecenas = fuerza/10;
+        fUnidades = fuerza - fDecenas*10;
+        lcd8_dispChar(fUnidades);
+        delay_1ms();
+        lcd8_setCursor(1,3);
+        delay_1ms();
+        lcd8_dispChar(fDecenas);
+        delay_1ms();
+        lcd8_setCursor(1,2);
+        delay_1ms();
+        lcd8_dispChar(fCentenas);
+        delay_1ms();
+# 149 "control_master.c"
     }
     return;
 }

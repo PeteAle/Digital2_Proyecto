@@ -47,31 +47,31 @@ uint8_t x = 0, z = 0;
 void setup(void);
 
 void __interrupt() ISR(){
-    //-------------------- Enviar por I2C -------------------------------------
-    if (PIR1bits.SSPIF == 1){
-            SSPCONbits.CKP = 0;
-            if (SSPCONbits.WCOL == 1 || SSPCONbits.SSPOV == 1){
-                x = SSPBUF;
-                SSPCONbits.WCOL = 0;
-                SSPCONbits.SSPOV = 0;
-                SSPCONbits.CKP = 1;
-            }
-            if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW){
-                x = SSPBUF;
-                while(!SSPSTATbits.BF);
-                z = SSPBUF;
-                SSPCONbits.CKP = 1;
-            }
-            else if (!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
-                x = SSPBUF;
-                SSPSTATbits.BF = 0;
-                SSPBUF = distancia;
-                SSPCONbits.CKP = 1;
-                __delay_us(300);
-                while(SSPSTATbits.BF);
-            }
-            PIR1bits.SSPIF = 0;
-        }
+//    //-------------------- Enviar por I2C -------------------------------------
+//    if (PIR1bits.SSPIF == 1){
+//            SSPCONbits.CKP = 0;
+//            if (SSPCONbits.WCOL == 1 || SSPCONbits.SSPOV == 1){
+//                x = SSPBUF;
+//                SSPCONbits.WCOL = 0;
+//                SSPCONbits.SSPOV = 0;
+//                SSPCONbits.CKP = 1;
+//            }
+//            if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW){
+//                x = SSPBUF;
+//                while(!SSPSTATbits.BF);
+//                z = SSPBUF;
+//                SSPCONbits.CKP = 1;
+//            }
+//            else if (!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
+//                x = SSPBUF;
+//                SSPSTATbits.BF = 0;
+//                SSPBUF = distancia;
+//                SSPCONbits.CKP = 1;
+//                __delay_us(300);
+//                while(SSPSTATbits.BF);
+//            }
+//            PIR1bits.SSPIF = 0;
+//        }
 }
 
 void main(void) {
@@ -97,24 +97,22 @@ void main(void) {
         distancia = (TMR1L | (TMR1H<<8));
 //        distancia = distancia/29.412;
 //        distancia = distancia + 1;
-//        //-------------------- Desplegar en LCD -------------------------------
-//        lcd8_setCursor(1,0);
-//        delay_1ms();
-//        lcd8_dispString("d:");
-//        delay_1ms();
-//        lcd8_setCursor(1,3);
-//        delay_1ms();
-//        lcd8_dispChar(distancia%10);
-//        delay_1ms();
-//        lcd8_setCursor(1,2);
-//        delay_1ms();
-//        distancia = distancia/10;
-//        lcd8_dispChar(distancia%10);
-//        delay_1ms();
-//        lcd8_setCursor(1,4);
-//        delay_1ms();
-//        lcd8_dispString("cm");
-//        delay_1ms();
+//        //-------------------- Funcionamiento de alarma ---------------------
+        if (distancia <= 100 && distancia >= 50){
+            PORTBbits.RB3 = 1;
+            __delay_ms(500);
+            PORTBbits.RB3 = 0;
+            __delay_ms(1000);
+        }
+        if (distancia <= 49 && distancia >= 21){
+            PORTBbits.RB3 = 1;
+            __delay_ms(500);
+            PORTBbits.RB3 = 0;
+            __delay_ms(500);
+        }
+        if (distancia < 20){
+            PORTBbits.RB3 = 1;            
+        }
     }
     return;
 }
@@ -124,11 +122,12 @@ void setup(void){
     Echo = 0;
     TRISBbits.TRISB0 = 0;
     TRISBbits.TRISB1 = 1;
-    TRISA = 0x00;
-    PORTA = 0x00;
+    TRISBbits.TRISB3 = 0;
+    //TRISA = 0x00;
+    //PORTA = 0x00;
     ANSEL = 0;
     ANSELH = 0;
-    TRISE = 0;
+    //TRISE = 0;
 }
 
 //void interruptEnable(void){
