@@ -14,6 +14,7 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>.</sourceRootElem>
+                <sourceRootElem>../Giroscopio.X</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
