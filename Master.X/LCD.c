@@ -68,6 +68,10 @@ void lcd8_setCursor(unsigned char fila, unsigned char columna){
     }
 }
 
+void lcd8_clearDisplay(void){
+    lcd8_cmd(0x01);
+}
+
 void delay_1ms(void){
     for (int i = 0; i < 50; i++);
     // _XTAL_FREQ 8000000

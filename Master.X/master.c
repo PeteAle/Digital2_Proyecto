@@ -54,12 +54,14 @@ void main(void){
     i2c_master_init(100000);
     lcd8_init();                // Iniciar el LCD (DESPUÉS DE INICIAR I2C!!!)
     while(1){
-        //----------------------- Recibir datos en I2C -----------------------
+        //----------------------- Recibir fuerza en I2C -----------------------
         i2c_masterStart();
         i2c_masterWrite(0x11);
         fuerza = i2c_masterRead(0);
         i2c_masterStop();
         __delay_ms(1);
+        //----------------------- Recibir velocidad en I2C --------------------
+        //----------------------- 
         //----------------------- Ultrasónico ---------------------------------
         TMR1H = 0;                // Establece TMR1H como 0.
         TMR1L = 0;                // Establece TMR1L como 0.
@@ -90,7 +92,7 @@ void main(void){
         if (distancia < 6){
             PORTBbits.RB2 = 1;            
         }
-        //------------------------ Desplegar en LCD ---------------------------
+        //------------------------ Distancia en LCD ---------------------------
         char D[5];
         sprintf(D ,"%3u", distancia);
         lcd8_setCursor(1,0);
@@ -104,7 +106,7 @@ void main(void){
         lcd8_setCursor(1,5);
         delay_1ms();
         lcd8_dispString("cm");
-        //------------------------ Fuerza en I2C ------------------------------
+        //------------------------ Fuerza en I2C y LCD ------------------------
         char F[5];
         sprintf(F, "%3u", fuerza);
         lcd8_setCursor(1,8);

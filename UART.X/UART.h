@@ -28,19 +28,12 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef __LCD_H_
-#define	__LCD_H_
+#ifndef __UART_H_
+#define	__UART_H_
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 
-void lcd8_init(void);
-void lcd8_cmd(unsigned char cmd);
-void lcd8_write(unsigned int dat);
-void lcd8_dispString(char *value);
-void lcd8_dispChar(char val_num);
-void lcd8_setCursor(unsigned char fila, unsigned char columna);
-void lcd8_clearDisplay(void);
-void delay_1ms(void);
+
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 
