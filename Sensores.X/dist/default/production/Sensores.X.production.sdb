@@ -9,6 +9,7 @@
 [v _adcInterrupt adcInterrupt `(v  1 e 1 0 ]
 "32
 [v _analogInSel analogInSel `(uc  1 e 1 0 ]
+[v i1_analogInSel analogInSel `(uc  1 e 1 0 ]
 "128
 [v _adcFoscSel adcFoscSel `(uc  1 e 1 0 ]
 "5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\__lldiv.c
@@ -27,11 +28,11 @@
 [v _i2c_slave_init i2c_slave_init `(v  1 e 1 0 ]
 "11 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\OSCCON.c
 [v _oscInit oscInit `(uc  1 e 1 0 ]
-"50 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\Sensores.c
+"49 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\Sensores.c
 [v _ISR ISR `II(v  1 e 1 0 ]
-"103
+"110
 [v _main main `(v  1 e 1 0 ]
-"152
+"159
 [v _setup setup `(v  1 e 1 0 ]
 [s S209 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
@@ -87,20 +88,20 @@
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
 "850
 [v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
-[s S452 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S479 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "870
-[s S458 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S485 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[u S463 . 1 `S452 1 . 1 0 `S458 1 . 1 0 ]
-[v _SSPCONbits SSPCONbits `VES463  1 e 1 @20 ]
+[u S490 . 1 `S479 1 . 1 0 `S485 1 . 1 0 ]
+[v _SSPCONbits SSPCONbits `VES490  1 e 1 @20 ]
 "1238
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
 [s S22 . 1 `uc 1 ADON 1 0 :1:0 
@@ -193,7 +194,7 @@
 [v _SSPADD SSPADD `VEuc  1 e 1 @147 ]
 "2177
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
-[s S479 . 1 `uc 1 BF 1 0 :1:0 
+[s S506 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -203,39 +204,39 @@
 `uc 1 SMP 1 0 :1:7 
 ]
 "2231
-[s S488 . 1 `uc 1 . 1 0 :2:0 
+[s S515 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S493 . 1 `uc 1 . 1 0 :2:0 
+[s S520 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DATA 1 0 :1:5 
 ]
-[s S499 . 1 `uc 1 . 1 0 :2:0 
+[s S526 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S504 . 1 `uc 1 . 1 0 :2:0 
+[s S531 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S509 . 1 `uc 1 . 1 0 :2:0 
+[s S536 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S514 . 1 `uc 1 . 1 0 :2:0 
+[s S541 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[u S519 . 1 `S479 1 . 1 0 `S488 1 . 1 0 `S493 1 . 1 0 `S499 1 . 1 0 `S504 1 . 1 0 `S509 1 . 1 0 `S514 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES519  1 e 1 @148 ]
+[u S546 . 1 `S506 1 . 1 0 `S515 1 . 1 0 `S520 1 . 1 0 `S526 1 . 1 0 `S531 1 . 1 0 `S536 1 . 1 0 `S541 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES546  1 e 1 @148 ]
 [s S68 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 VCFG0 1 0 :1:4 
 `uc 1 VCFG1 1 0 :1:5 
@@ -259,20 +260,22 @@
 [v _ANSELHbits ANSELHbits `VES639  1 e 1 @393 ]
 "3566
 [v _ACKEN ACKEN `VEb  1 e 0 @1164 ]
-"43 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\Sensores.c
+"42 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\Sensores.c
+[v _luz luz `i  1 e 2 0 ]
+"43
 [v _fuerza fuerza `i  1 e 2 0 ]
-"46
+"45
 [v _x x `uc  1 e 1 0 ]
 [v _z z `uc  1 e 1 0 ]
-"103
+"110
 [v _main main `(v  1 e 1 0 ]
 {
-"150
+"157
 } 0
-"152
+"159
 [v _setup setup `(v  1 e 1 0 ]
 {
-"161
+"168
 } 0
 "11 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\OSCCON.c
 [v _oscInit oscInit `(uc  1 e 1 0 ]
@@ -317,8 +320,16 @@
 [v adcFoscSel@fosc fosc `uc  1 a 1 2 ]
 "144
 } 0
-"50 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\Sensores.c
+"49 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\Sensores.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"101
+"108
+} 0
+"32 C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Sensores.X\ADC.c
+[v i1_analogInSel analogInSel `(uc  1 e 1 0 ]
+{
+[v i1analogInSel@analogIn analogIn `uc  1 a 1 wreg ]
+[v i1analogInSel@analogIn analogIn `uc  1 a 1 wreg ]
+[v i1analogInSel@analogIn analogIn `uc  1 a 1 2 ]
+"120
 } 0

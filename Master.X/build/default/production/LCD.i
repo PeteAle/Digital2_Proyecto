@@ -2496,13 +2496,14 @@ extern __bank0 __bit __timeout;
 
 # 1 "./LCD.h" 1
 # 36 "./LCD.h"
-void delay_1ms(void);
 void lcd8_init(void);
 void lcd8_cmd(unsigned char cmd);
 void lcd8_write(unsigned int dat);
 void lcd8_dispString(char *value);
 void lcd8_dispChar(char val_num);
 void lcd8_setCursor(unsigned char fila, unsigned char columna);
+void lcd8_clearDisplay(void);
+void delay_1ms(void);
 # 16 "LCD.c" 2
 
 
@@ -2557,6 +2558,10 @@ void lcd8_setCursor(unsigned char fila, unsigned char columna){
     else if (fila == 2){
         lcd8_cmd(0xC0 + columna);
     }
+}
+
+void lcd8_clearDisplay(void){
+    lcd8_cmd(0x01);
 }
 
 void delay_1ms(void){

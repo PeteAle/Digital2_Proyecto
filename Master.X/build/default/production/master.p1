@@ -18,72 +18,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40 ./I2C.h
 [; ;./I2C.h: 40: void i2c_master_init(unsigned long c);
 [v _i2c_master_init `(v ~T0 @X0 0 ef1`ul ]
-"37 ./LCD.h
-[; ;./LCD.h: 37: void lcd8_init(void);
+"36 ./LCD.h
+[; ;./LCD.h: 36: void lcd8_init(void);
 [v _lcd8_init `(v ~T0 @X0 0 ef ]
-"42 ./I2C.h
-[; ;./I2C.h: 42: void i2c_masterStart(void);
-[v _i2c_masterStart `(v ~T0 @X0 0 ef ]
+"43 ./I2C.h
+[; ;./I2C.h: 43: void i2c_addr_start(char addr);
+[v _i2c_addr_start `(v ~T0 @X0 0 ef1`uc ]
+"47
+[; ;./I2C.h: 47: unsigned char i2c_masterWrite(unsigned char data);
+[v _i2c_masterWrite `(uc ~T0 @X0 0 ef1`uc ]
 "45
-[; ;./I2C.h: 45: void i2c_masterWrite(unsigned int data);
-[v _i2c_masterWrite `(v ~T0 @X0 0 ef1`ui ]
-"46
-[; ;./I2C.h: 46: unsigned short i2c_masterRead(unsigned short a);
-[v _i2c_masterRead `(us ~T0 @X0 0 ef1`us ]
-"44
-[; ;./I2C.h: 44: void i2c_masterStop(void);
+[; ;./I2C.h: 45: void i2c_masterStop(void);
 [v _i2c_masterStop `(v ~T0 @X0 0 ef ]
 [v F1256 `(v ~T0 @X0 1 tf1`ul ]
 "92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
 [v __delay `JF1256 ~T0 @X0 0 e ]
 [p i __delay ]
-"664 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 664: extern volatile unsigned char TMR1H __attribute__((address(0x00F)));
-[v _TMR1H `Vuc ~T0 @X0 0 e@15 ]
-"657
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 657: extern volatile unsigned char TMR1L __attribute__((address(0x00E)));
-[v _TMR1L `Vuc ~T0 @X0 0 e@14 ]
-"234
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 234:     struct {
-[s S8 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S8 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
-"233
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 233: typedef union {
-[u S7 `S8 1 ]
-[n S7 . . ]
-"245
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 245: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x006)));
-[v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
-"677
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 677:     struct {
-[s S23 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S23 . TMR1ON TMR1CS nT1SYNC T1OSCEN T1CKPS TMR1GE T1GINV ]
-"686
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 686:     struct {
-[s S24 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S24 . . T1INSYNC . T1CKPS0 T1CKPS1 . T1GIV ]
-"695
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 695:     struct {
-[s S25 :2 `uc 1 :1 `uc 1 ]
-[n S25 . . T1SYNC ]
-"676
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 676: typedef union {
-[u S22 `S23 1 `S24 1 `S25 1 ]
-[n S22 . . . . ]
-"700
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 700: extern volatile T1CONbits_t T1CONbits __attribute__((address(0x010)));
-[v _T1CONbits `VS22 ~T0 @X0 0 e@16 ]
-"194 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c90\stdio.h
-[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
-"42 ./LCD.h
-[; ;./LCD.h: 42: void lcd8_setCursor(unsigned char fila, unsigned char columna);
-[v _lcd8_setCursor `(v ~T0 @X0 0 ef2`uc`uc ]
-"36
-[; ;./LCD.h: 36: void delay_1ms(void);
-[v _delay_1ms `(v ~T0 @X0 0 ef ]
-"40
-[; ;./LCD.h: 40: void lcd8_dispString(char *value);
-[v _lcd8_dispString `(v ~T0 @X0 0 ef1`*uc ]
 "1416 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 1416: extern volatile unsigned char TRISA __attribute__((address(0x085)));
 [v _TRISA `Vuc ~T0 @X0 0 e@133 ]
@@ -98,6 +48,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1495
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 1495: extern volatile TRISBbits_t TRISBbits __attribute__((address(0x086)));
 [v _TRISBbits `VS54 ~T0 @X0 0 e@134 ]
+"1602
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 1602: extern volatile unsigned char TRISD __attribute__((address(0x088)));
+[v _TRISD `Vuc ~T0 @X0 0 e@136 ]
+"352
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
+[v _PORTD `Vuc ~T0 @X0 0 e@8 ]
 "1664
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 1664: extern volatile unsigned char TRISE __attribute__((address(0x089)));
 [v _TRISE `Vuc ~T0 @X0 0 e@137 ]
@@ -408,231 +364,64 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 141 ]
 {
 "58
-[; ;master.c: 58:         i2c_masterStart();
-[e ( _i2c_masterStart ..  ]
+[; ;master.c: 58:         i2c_addr_start(0x50);
+[e ( _i2c_addr_start (1 -> -> 80 `i `uc ]
 "59
-[; ;master.c: 59:         i2c_masterWrite(0x11);
-[e ( _i2c_masterWrite (1 -> -> 17 `i `ui ]
+[; ;master.c: 59:         i2c_masterWrite(0xD1);
+[e ( _i2c_masterWrite (1 -> -> 209 `i `uc ]
 "60
-[; ;master.c: 60:         fuerza = i2c_masterRead(0);
-[e = _fuerza -> ( _i2c_masterRead (1 -> -> 0 `i `us `ui ]
-"61
-[; ;master.c: 61:         i2c_masterStop();
+[; ;master.c: 60:         i2c_masterStop();
 [e ( _i2c_masterStop ..  ]
-"62
-[; ;master.c: 62:         _delay((unsigned long)((1)*(4000000/4000.0)));
+"61
+[; ;master.c: 61:         _delay((unsigned long)((1)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"64
-[; ;master.c: 64:         TMR1H = 0;
-[e = _TMR1H -> -> 0 `i `uc ]
-"65
-[; ;master.c: 65:         TMR1L = 0;
-[e = _TMR1L -> -> 0 `i `uc ]
-"66
-[; ;master.c: 66:         PORTBbits.RB0 = 1;
-[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
-"67
-[; ;master.c: 67:         _delay((unsigned long)((10)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"68
-[; ;master.c: 68:         PORTBbits.RB0 = 0;
-[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
-"69
-[; ;master.c: 69:         while(!PORTBbits.RB1);
-[e $U 143  ]
-[e :U 144 ]
-[e :U 143 ]
-[e $ ! != -> . . _PORTBbits 0 1 `i -> 0 `i 144  ]
-[e :U 145 ]
-"70
-[; ;master.c: 70:         T1CONbits.TMR1ON = 1;
-[e = . . _T1CONbits 0 0 -> -> 1 `i `uc ]
-"71
-[; ;master.c: 71:         while(PORTBbits.RB1);
-[e $U 146  ]
-[e :U 147 ]
-[e :U 146 ]
-[e $ != -> . . _PORTBbits 0 1 `i -> 0 `i 147  ]
-[e :U 148 ]
-"72
-[; ;master.c: 72:         T1CONbits.TMR1ON = 0;
-[e = . . _T1CONbits 0 0 -> -> 0 `i `uc ]
-"74
-[; ;master.c: 74:         distancia = (TMR1L | (TMR1H<<8));
-[e = _distancia -> | -> _TMR1L `i << -> _TMR1H `i -> 8 `i `ui ]
-"75
-[; ;master.c: 75:         distancia = distancia/29;
-[e = _distancia / _distancia -> -> 29 `i `ui ]
-"76
-[; ;master.c: 76:         distancia = distancia + 1;
-[e = _distancia + _distancia -> -> 1 `i `ui ]
-"78
-[; ;master.c: 78:         if (distancia <= 10 && distancia >= 9){
-[e $ ! && <= _distancia -> -> 10 `i `ui >= _distancia -> -> 9 `i `ui 149  ]
-{
-"79
-[; ;master.c: 79:             PORTBbits.RB2 = 1;
-[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
-"80
-[; ;master.c: 80:             _delay((unsigned long)((300)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"81
-[; ;master.c: 81:             PORTBbits.RB2 = 0;
-[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
-"82
-[; ;master.c: 82:             _delay((unsigned long)((600)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 600 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"83
-[; ;master.c: 83:         }
-}
-[e :U 149 ]
-"84
-[; ;master.c: 84:         if (distancia <= 8 && distancia >= 6){
-[e $ ! && <= _distancia -> -> 8 `i `ui >= _distancia -> -> 6 `i `ui 150  ]
-{
-"85
-[; ;master.c: 85:             PORTBbits.RB2 = 1;
-[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
-"86
-[; ;master.c: 86:             _delay((unsigned long)((300)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"87
-[; ;master.c: 87:             PORTBbits.RB2 = 0;
-[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
-"88
-[; ;master.c: 88:             _delay((unsigned long)((300)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"89
-[; ;master.c: 89:         }
-}
-[e :U 150 ]
-"90
-[; ;master.c: 90:         if (distancia < 6){
-[e $ ! < _distancia -> -> 6 `i `ui 151  ]
-{
-"91
-[; ;master.c: 91:             PORTBbits.RB2 = 1;
-[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
-"92
-[; ;master.c: 92:         }
-}
-[e :U 151 ]
-"94
-[; ;master.c: 94:         char D[5];
-[v _D `uc ~T0 @X0 -> 5 `i a ]
-"95
-[; ;master.c: 95:         sprintf(D ,"%3u", distancia);
-[e ( _sprintf (1 , (. , &U _D :s 1C _distancia ]
-"96
-[; ;master.c: 96:         lcd8_setCursor(1,0);
-[e ( _lcd8_setCursor (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"97
-[; ;master.c: 97:         delay_1ms();
-[e ( _delay_1ms ..  ]
-"98
-[; ;master.c: 98:         lcd8_dispString("d:");
-[e ( _lcd8_dispString (1 :s 2C ]
-"99
-[; ;master.c: 99:         delay_1ms();
-[e ( _delay_1ms ..  ]
-"100
-[; ;master.c: 100:         lcd8_setCursor(1,2);
-[e ( _lcd8_setCursor (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
-"101
-[; ;master.c: 101:         delay_1ms();
-[e ( _delay_1ms ..  ]
-"102
-[; ;master.c: 102:         lcd8_dispString(D);
-[e ( _lcd8_dispString (1 &U _D ]
-"103
-[; ;master.c: 103:         delay_1ms();
-[e ( _delay_1ms ..  ]
-"104
-[; ;master.c: 104:         lcd8_setCursor(1,5);
-[e ( _lcd8_setCursor (2 , -> -> 1 `i `uc -> -> 5 `i `uc ]
-"105
-[; ;master.c: 105:         delay_1ms();
-[e ( _delay_1ms ..  ]
-"106
-[; ;master.c: 106:         lcd8_dispString("cm");
-[e ( _lcd8_dispString (1 :s 3C ]
-"108
-[; ;master.c: 108:         char F[5];
-[v _F `uc ~T0 @X0 -> 5 `i a ]
-"109
-[; ;master.c: 109:         sprintf(F, "%3u", fuerza);
-[e ( _sprintf (1 , (. , &U _F :s 4C _fuerza ]
-"110
-[; ;master.c: 110:         lcd8_setCursor(1,8);
-[e ( _lcd8_setCursor (2 , -> -> 1 `i `uc -> -> 8 `i `uc ]
-"111
-[; ;master.c: 111:         delay_1ms();
-[e ( _delay_1ms ..  ]
-"112
-[; ;master.c: 112:         lcd8_dispString("f:");
-[e ( _lcd8_dispString (1 :s 5C ]
-"113
-[; ;master.c: 113:         delay_1ms();
-[e ( _delay_1ms ..  ]
-"114
-[; ;master.c: 114:         lcd8_setCursor(1,10);
-[e ( _lcd8_setCursor (2 , -> -> 1 `i `uc -> -> 10 `i `uc ]
-"115
-[; ;master.c: 115:         delay_1ms();
-[e ( _delay_1ms ..  ]
-"116
-[; ;master.c: 116:         lcd8_dispString(F);
-[e ( _lcd8_dispString (1 &U _F ]
-"117
-[; ;master.c: 117:         delay_1ms();
-[e ( _delay_1ms ..  ]
-"118
-[; ;master.c: 118:     }
+"125
+[; ;master.c: 125:     }
 }
 [e :U 140 ]
 [e $U 141  ]
 [e :U 142 ]
-"119
-[; ;master.c: 119:     return;
+"126
+[; ;master.c: 126:     return;
 [e $UE 139  ]
-"120
-[; ;master.c: 120: }
+"127
+[; ;master.c: 127: }
 [e :UE 139 ]
 }
-"122
-[; ;master.c: 122: void setup(void){
+"129
+[; ;master.c: 129: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"123
-[; ;master.c: 123:     TRISA = 0x00;
-[e = _TRISA -> -> 0 `i `uc ]
-"124
-[; ;master.c: 124:     TRISBbits.TRISB0 = 0;
-[e = . . _TRISBbits 0 0 -> -> 0 `i `uc ]
-"125
-[; ;master.c: 125:     TRISBbits.TRISB1 = 1;
-[e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
-"126
-[; ;master.c: 126:     TRISBbits.TRISB2 = 0;
-[e = . . _TRISBbits 0 2 -> -> 0 `i `uc ]
-"127
-[; ;master.c: 127:     TRISE = 0;
-[e = _TRISE -> -> 0 `i `uc ]
-"128
-[; ;master.c: 128:     ANSEL = 0;
-[e = _ANSEL -> -> 0 `i `uc ]
-"129
-[; ;master.c: 129:     ANSELH = 0;
-[e = _ANSELH -> -> 0 `i `uc ]
 "130
-[; ;master.c: 130: }
-[e :UE 152 ]
+[; ;master.c: 130:     TRISA = 0x00;
+[e = _TRISA -> -> 0 `i `uc ]
+"131
+[; ;master.c: 131:     TRISBbits.TRISB0 = 0;
+[e = . . _TRISBbits 0 0 -> -> 0 `i `uc ]
+"132
+[; ;master.c: 132:     TRISBbits.TRISB1 = 1;
+[e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
+"133
+[; ;master.c: 133:     TRISBbits.TRISB2 = 0;
+[e = . . _TRISBbits 0 2 -> -> 0 `i `uc ]
+"134
+[; ;master.c: 134:     TRISD = 0xFF;
+[e = _TRISD -> -> 255 `i `uc ]
+"135
+[; ;master.c: 135:     PORTD = 0;
+[e = _PORTD -> -> 0 `i `uc ]
+"136
+[; ;master.c: 136:     TRISE = 0;
+[e = _TRISE -> -> 0 `i `uc ]
+"137
+[; ;master.c: 137:     ANSEL = 0;
+[e = _ANSEL -> -> 0 `i `uc ]
+"138
+[; ;master.c: 138:     ANSELH = 0;
+[e = _ANSELH -> -> 0 `i `uc ]
+"139
+[; ;master.c: 139: }
+[e :UE 143 ]
 }
-[p f _sprintf 8422400 ]
-[a 1C 37 51 117 0 ]
-[a 4C 37 51 117 0 ]
-[a 3C 99 109 0 ]
-[a 5C 102 58 0 ]
-[a 2C 100 58 0 ]

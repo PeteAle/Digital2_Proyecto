@@ -3,8 +3,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
 [v __delay `JF1256 ~T0 @X0 0 e ]
 [p i __delay ]
-"38 ./LCD.h
-[; ;./LCD.h: 38: void lcd8_cmd(unsigned char cmd);
+"37 ./LCD.h
+[; ;./LCD.h: 37: void lcd8_cmd(unsigned char cmd);
 [v _lcd8_cmd `(v ~T0 @X0 0 ef1`uc ]
 "166 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
@@ -20,8 +20,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "427
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 427: extern volatile PORTEbits_t PORTEbits __attribute__((address(0x009)));
 [v _PORTEbits `VS13 ~T0 @X0 0 e@9 ]
-"36 ./LCD.h
-[; ;./LCD.h: 36: void delay_1ms(void);
+"43 ./LCD.h
+[; ;./LCD.h: 43: void delay_1ms(void);
 [v _delay_1ms `(v ~T0 @X0 0 ef ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 54: __asm("INDF equ 00h");
@@ -442,24 +442,37 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 146 ]
 }
 "71
-[; ;LCD.c: 71: void delay_1ms(void){
+[; ;LCD.c: 71: void lcd8_clearDisplay(void){
+[v _lcd8_clearDisplay `(v ~T0 @X0 1 ef ]
+{
+[e :U _lcd8_clearDisplay ]
+[f ]
+"72
+[; ;LCD.c: 72:     lcd8_cmd(0x01);
+[e ( _lcd8_cmd (1 -> -> 1 `i `uc ]
+"73
+[; ;LCD.c: 73: }
+[e :UE 150 ]
+}
+"75
+[; ;LCD.c: 75: void delay_1ms(void){
 [v _delay_1ms `(v ~T0 @X0 1 ef ]
 {
 [e :U _delay_1ms ]
 [f ]
-"72
-[; ;LCD.c: 72:     for (int i = 0; i < 50; i++);
+"76
+[; ;LCD.c: 76:     for (int i = 0; i < 50; i++);
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 50 `i 151  ]
-[e $U 152  ]
-[e :U 151 ]
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 50 `i 151  ]
+[e $ < _i -> 50 `i 152  ]
+[e $U 153  ]
 [e :U 152 ]
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 50 `i 152  ]
+[e :U 153 ]
 }
-"76
-[; ;LCD.c: 76: }
-[e :UE 150 ]
+"80
+[; ;LCD.c: 80: }
+[e :UE 151 ]
 }

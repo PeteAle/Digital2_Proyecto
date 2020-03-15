@@ -2506,9 +2506,11 @@ extern __bank0 __bit __timeout;
 void i2c_master_init(unsigned long c);
 void i2c_masterWait(void);
 void i2c_masterStart(void);
+void i2c_addr_start(char addr);
 void i2c_masterRStart(void);
 void i2c_masterStop(void);
-void i2c_masterWrite(unsigned int data);
+
+unsigned char i2c_masterWrite(unsigned char data);
 unsigned short i2c_masterRead(unsigned short a);
 # 10 "I2C.c" 2
 
@@ -2531,6 +2533,12 @@ void i2c_masterStart(void){
     SSPCON2bits.SEN = 1;
 }
 
+void i2c_addr_start(char addr){
+    i2c_masterWait();
+    SSPCON2bits.SEN = 1;
+    i2c_masterWrite(addr);
+}
+
 void i2c_master_RStart(void){
     i2c_masterWait();
     SSPCON2bits.RSEN = 1;
@@ -2541,28 +2549,42 @@ void i2c_masterStop(void){
     SSPCON2bits.PEN = 1;
 }
 
-void i2c_masterWrite(unsigned int data){
+unsigned char i2c_masterWrite(unsigned char data){
     i2c_masterWait();
     SSPBUF = data;
+    while(!PIR1bits.SSPIF);
+    PIR1bits.SSPIF = 0;
+    return SSPCON2bits.ACKSTAT;
 }
+
+
+
+
+
 
 unsigned short i2c_masterRead(unsigned short a){
-    unsigned short temp;
-    i2c_masterWait();
+    unsigned char temp;
+
     SSPCON2bits.RCEN = 1;
-    i2c_masterWait();
+
+    while(!SSPSTATbits.BF);
     temp = SSPBUF;
-    i2c_masterWait();
+
     if (a == 0){
-        SSPCON2bits.ACKDT = 1;
+        SSPCON2bits.ACKDT = 0;
+        SSPCON2bits.ACKEN = 1;
+        while(SSPCON2bits.ACKEN);
     }
     else if (a == 1){
-        SSPCON2bits.ACKDT = 0;
+        SSPCON2bits.ACKDT = 1;
+        SSPCON2bits.ACKEN = 1;
+        while(SSPCON2bits.ACKEN);
     }
-    ACKEN = 1;
+    while(!PIR1bits.SSPIF);
+
     return temp;
 }
-
+# 99 "I2C.c"
 void i2c_slave_init(short address){
     SSPSTAT = 0x80;
     SSPADD = address;

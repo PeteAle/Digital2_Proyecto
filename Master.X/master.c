@@ -54,69 +54,74 @@ void main(void){
     i2c_master_init(100000);
     lcd8_init();                // Iniciar el LCD (DESPUÉS DE INICIAR I2C!!!)
     while(1){
-        //----------------------- Recibir fuerza en I2C -----------------------
-        i2c_masterStart();
-        i2c_masterWrite(0x11);
-        fuerza = i2c_masterRead(0);
+        //----------------------- Datos del controlador -----------------------
+        i2c_addr_start(0x50);
+        i2c_masterWrite(0xD1);
         i2c_masterStop();
         __delay_ms(1);
-        //----------------------- Recibir velocidad en I2C --------------------
-        //----------------------- 
-        //----------------------- Ultrasónico ---------------------------------
-        TMR1H = 0;                // Establece TMR1H como 0.
-        TMR1L = 0;                // Establece TMR1L como 0.
-        Trigger = 1;              // Habilitar el trigger para enciar señal
-        __delay_us(10);           // 10uS Delay 
-        Trigger = 0;              // TRIGGER LOW para parar señal
-        while(!Echo);             // Esperando recibir el ECHO (señal rebotada)
-        T1CONbits.TMR1ON = 1;               // Inicia timer
-        while(Echo);              // Esperar que ya no se reciba un ECHO.
-        T1CONbits.TMR1ON = 0;               // Para el timer
-        //------------------- Cálculo de distancia ----------------------------
-        distancia = (TMR1L | (TMR1H<<8));
-        distancia = distancia/29;
-        distancia = distancia + 1;
-        //------------------- Alarma de distancia -----------------------------
-        if (distancia <= 10 && distancia >= 9){
-            PORTBbits.RB2 = 1;
-            __delay_ms(300);
-            PORTBbits.RB2 = 0;
-            __delay_ms(600);
-        }
-        if (distancia <= 8 && distancia >= 6){
-            PORTBbits.RB2 = 1;
-            __delay_ms(300);
-            PORTBbits.RB2 = 0;
-            __delay_ms(300);
-        }
-        if (distancia < 6){
-            PORTBbits.RB2 = 1;            
-        }
-        //------------------------ Distancia en LCD ---------------------------
-        char D[5];
-        sprintf(D ,"%3u", distancia);
-        lcd8_setCursor(1,0);
-        delay_1ms();
-        lcd8_dispString("d:");
-        delay_1ms();
-        lcd8_setCursor(1,2);
-        delay_1ms();
-        lcd8_dispString(D);
-        delay_1ms();
-        lcd8_setCursor(1,5);
-        delay_1ms();
-        lcd8_dispString("cm");
-        //------------------------ Fuerza en I2C y LCD ------------------------
-        char F[5];
-        sprintf(F, "%3u", fuerza);
-        lcd8_setCursor(1,8);
-        delay_1ms();
-        lcd8_dispString("f:");
-        delay_1ms();
-        lcd8_setCursor(1,10);
-        delay_1ms();
-        lcd8_dispString(F);
-        delay_1ms();
+        //----------------------- Recibir fuerza en I2C -----------------------
+//        i2c_masterStart();
+//        i2c_masterWrite(0x11);
+//        fuerza = i2c_masterRead(0);
+//        i2c_masterStop();
+//        __delay_ms(10);
+//        //----------------------- Recibir velocidad en I2C --------------------
+//        //----------------------- 
+//        //----------------------- Ultrasónico ---------------------------------
+//        TMR1H = 0;                // Establece TMR1H como 0.
+//        TMR1L = 0;                // Establece TMR1L como 0.
+//        Trigger = 1;              // Habilitar el trigger para enciar señal
+//        __delay_us(10);           // 10uS Delay 
+//        Trigger = 0;              // TRIGGER LOW para parar señal
+//        while(!Echo);             // Esperando recibir el ECHO (señal rebotada)
+//        T1CONbits.TMR1ON = 1;               // Inicia timer
+//        while(Echo);              // Esperar que ya no se reciba un ECHO.
+//        T1CONbits.TMR1ON = 0;               // Para el timer
+//        //------------------- Cálculo de distancia ----------------------------
+//        distancia = (TMR1L | (TMR1H<<8));
+//        distancia = distancia/29;
+//        distancia = distancia + 1;
+//        //------------------- Alarma de distancia -----------------------------
+//        if (distancia <= 10 && distancia >= 9){
+//            PORTBbits.RB2 = 1;
+//            __delay_ms(300);
+//            PORTBbits.RB2 = 0;
+//            __delay_ms(600);
+//        }
+//        if (distancia <= 8 && distancia >= 6){
+//            PORTBbits.RB2 = 1;
+//            __delay_ms(300);
+//            PORTBbits.RB2 = 0;
+//            __delay_ms(300);
+//        }
+//        if (distancia < 6){
+//            PORTBbits.RB2 = 1;            
+//        }
+//        //------------------------ Distancia en LCD ---------------------------
+//        char D[5];
+//        sprintf(D ,"%3u", distancia);
+//        lcd8_setCursor(1,0);
+//        delay_1ms();
+//        lcd8_dispString("d:");
+//        delay_1ms();
+//        lcd8_setCursor(1,2);
+//        delay_1ms();
+//        lcd8_dispString(D);
+//        delay_1ms();
+//        lcd8_setCursor(1,5);
+//        delay_1ms();
+//        lcd8_dispString("cm");
+//        //------------------------ Fuerza en I2C y LCD ------------------------
+//        char F[5];
+//        sprintf(F, "%3u", fuerza);
+//        lcd8_setCursor(1,8);
+//        delay_1ms();
+//        lcd8_dispString("f:");
+//        delay_1ms();
+//        lcd8_setCursor(1,10);
+//        delay_1ms();
+//        lcd8_dispString(F);
+//        delay_1ms();
     }
     return;
 }
@@ -126,6 +131,8 @@ void setup(void){
     TRISBbits.TRISB0 = 0;
     TRISBbits.TRISB1 = 1;
     TRISBbits.TRISB2 = 0;
+    TRISD = 0xFF;
+    PORTD = 0;
     TRISE = 0;
     ANSEL = 0;
     ANSELH = 0;

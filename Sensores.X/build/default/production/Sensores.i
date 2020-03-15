@@ -2782,18 +2782,25 @@ void i2c_slave_init(short address);
 
 
 
-int distancia = 0;
+int luz = 0;
 int fuerza = 0;
-int velocidad = 0;
-int angulo = 0;
+
 uint8_t x = 0, z = 0;
 
 void setup(void);
 
 void __attribute__((picinterrupt(("")))) ISR(){
     (INTCONbits.GIE = 0);
-    if (PIR1bits.ADIF == 1){
+
+    if (PIR1bits.ADIF == 1 && ADCON0bits.CHS3 == 1 && ADCON0bits.CHS2 == 0 && ADCON0bits.CHS1 == 0 && ADCON0bits.CHS0 == 1){
         fuerza = ADRESH;
+        analogInSel(8);
+        PIR1bits.ADIF = 0;
+    }
+
+    else if (PIR1bits.ADIF == 1 && ADCON0bits.CHS3 == 1 && ADCON0bits.CHS2 == 0 && ADCON0bits.CHS1 == 0 && ADCON0bits.CHS0 == 0){
+        luz = ADRESH;
+        analogInSel(9);
         PIR1bits.ADIF = 0;
     }
 
@@ -2814,11 +2821,21 @@ void __attribute__((picinterrupt(("")))) ISR(){
         else if (!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
             x = SSPBUF;
             SSPSTATbits.BF = 0;
-
-
+            if (z == 0x01){
+                x = SSPBUF;
                 SSPBUF = fuerza;
                 SSPCONbits.CKP = 1;
-# 89 "Sensores.c"
+            }
+            else if (z == 0x02){
+                x = SSPBUF;
+                SSPBUF = luz;
+                SSPCONbits.CKP = 1;
+            }
+
+
+
+
+
             _delay((unsigned long)((300)*(4000000/4000000.0)));
             while(SSPSTATbits.BF);
         }
@@ -2846,7 +2863,7 @@ void main(void) {
         if (ADCON0bits.GO_DONE == 0){
             ADCON0bits.GO_DONE = 1;
         }
-# 148 "Sensores.c"
+# 155 "Sensores.c"
     }
     return;
 }

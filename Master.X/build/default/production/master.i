@@ -2752,21 +2752,24 @@ typedef uint16_t uintptr_t;
 void i2c_master_init(unsigned long c);
 void i2c_masterWait(void);
 void i2c_masterStart(void);
+void i2c_addr_start(char addr);
 void i2c_masterRStart(void);
 void i2c_masterStop(void);
-void i2c_masterWrite(unsigned int data);
+
+unsigned char i2c_masterWrite(unsigned char data);
 unsigned short i2c_masterRead(unsigned short a);
 # 34 "master.c" 2
 
 # 1 "./LCD.h" 1
 # 36 "./LCD.h"
-void delay_1ms(void);
 void lcd8_init(void);
 void lcd8_cmd(unsigned char cmd);
 void lcd8_write(unsigned int dat);
 void lcd8_dispString(char *value);
 void lcd8_dispChar(char val_num);
 void lcd8_setCursor(unsigned char fila, unsigned char columna);
+void lcd8_clearDisplay(void);
+void delay_1ms(void);
 # 35 "master.c" 2
 
 # 1 "./OSCCON.h" 1
@@ -2801,66 +2804,11 @@ void main(void){
     lcd8_init();
     while(1){
 
-        i2c_masterStart();
-        i2c_masterWrite(0x11);
-        fuerza = i2c_masterRead(0);
+        i2c_addr_start(0x50);
+        i2c_masterWrite(0xD1);
         i2c_masterStop();
         _delay((unsigned long)((1)*(4000000/4000.0)));
-
-        TMR1H = 0;
-        TMR1L = 0;
-        PORTBbits.RB0 = 1;
-        _delay((unsigned long)((10)*(4000000/4000000.0)));
-        PORTBbits.RB0 = 0;
-        while(!PORTBbits.RB1);
-        T1CONbits.TMR1ON = 1;
-        while(PORTBbits.RB1);
-        T1CONbits.TMR1ON = 0;
-
-        distancia = (TMR1L | (TMR1H<<8));
-        distancia = distancia/29;
-        distancia = distancia + 1;
-
-        if (distancia <= 10 && distancia >= 9){
-            PORTBbits.RB2 = 1;
-            _delay((unsigned long)((300)*(4000000/4000.0)));
-            PORTBbits.RB2 = 0;
-            _delay((unsigned long)((600)*(4000000/4000.0)));
-        }
-        if (distancia <= 8 && distancia >= 6){
-            PORTBbits.RB2 = 1;
-            _delay((unsigned long)((300)*(4000000/4000.0)));
-            PORTBbits.RB2 = 0;
-            _delay((unsigned long)((300)*(4000000/4000.0)));
-        }
-        if (distancia < 6){
-            PORTBbits.RB2 = 1;
-        }
-
-        char D[5];
-        sprintf(D ,"%3u", distancia);
-        lcd8_setCursor(1,0);
-        delay_1ms();
-        lcd8_dispString("d:");
-        delay_1ms();
-        lcd8_setCursor(1,2);
-        delay_1ms();
-        lcd8_dispString(D);
-        delay_1ms();
-        lcd8_setCursor(1,5);
-        delay_1ms();
-        lcd8_dispString("cm");
-
-        char F[5];
-        sprintf(F, "%3u", fuerza);
-        lcd8_setCursor(1,8);
-        delay_1ms();
-        lcd8_dispString("f:");
-        delay_1ms();
-        lcd8_setCursor(1,10);
-        delay_1ms();
-        lcd8_dispString(F);
-        delay_1ms();
+# 125 "master.c"
     }
     return;
 }
@@ -2870,6 +2818,8 @@ void setup(void){
     TRISBbits.TRISB0 = 0;
     TRISBbits.TRISB1 = 1;
     TRISBbits.TRISB2 = 0;
+    TRISD = 0xFF;
+    PORTD = 0;
     TRISE = 0;
     ANSEL = 0;
     ANSELH = 0;
