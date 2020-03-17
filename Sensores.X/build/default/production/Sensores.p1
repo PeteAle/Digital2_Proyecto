@@ -53,10 +53,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1238
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 1238: extern volatile unsigned char ADRESH __attribute__((address(0x01E)));
 [v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
-"38 ./ADC.h
-[; ;./ADC.h: 38: unsigned char analogInSel(unsigned char analogIn);
-[v _analogInSel `(uc ~T0 @X0 0 ef1`uc ]
-"856 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
+"856
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 856:     struct {
 [s S30 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S30 . SSPM CKP SSPEN SSPOV WCOL ]
@@ -109,13 +106,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2231
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 2231: extern volatile SSPSTATbits_t SSPSTATbits __attribute__((address(0x094)));
 [v _SSPSTATbits `VS81 ~T0 @X0 0 e@148 ]
+"166
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
+[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
 [v F1256 `(v ~T0 @X0 1 tf1`ul ]
 "92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
 [v __delay `JF1256 ~T0 @X0 0 e ]
 [p i __delay ]
 [p mainexit ]
-"47 Sensores.c
-[; ;Sensores.c: 47: void setup(void);
+"46 Sensores.c
+[; ;Sensores.c: 46: void setup(void);
 [v _setup `(v ~T0 @X0 0 ef ]
 "36 ./OSCCON.h
 [; ;./OSCCON.h: 36: unsigned char oscInit(unsigned char freq);
@@ -126,13 +126,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 "39
 [; ;./ADC.h: 39: unsigned char adcFoscSel(unsigned char fosc);
 [v _adcFoscSel `(uc ~T0 @X0 0 ef1`uc ]
+"38
+[; ;./ADC.h: 38: unsigned char analogInSel(unsigned char analogIn);
+[v _analogInSel `(uc ~T0 @X0 0 ef1`uc ]
 "37
 [; ;./ADC.h: 37: void adcInterrupt(unsigned char en);
 [v _adcInterrupt `(v ~T0 @X0 0 ef1`uc ]
 "47 ./I2C.h
 [; ;./I2C.h: 47: void i2c_slave_init(short address);
 [v _i2c_slave_init `(v ~T0 @X0 0 ef1`s ]
-"1484 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
+"1416 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 1416: extern volatile unsigned char TRISA __attribute__((address(0x085)));
+[v _TRISA `Vuc ~T0 @X0 0 e@133 ]
+"1484
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 1484:     struct {
 [s S55 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S55 . TRISB0 TRISB1 TRISB2 TRISB3 TRISB4 TRISB5 TRISB6 TRISB7 ]
@@ -415,20 +421,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"42 Sensores.c
-[; ;Sensores.c: 42: int luz = 0;
+"41 Sensores.c
+[; ;Sensores.c: 41: int luz = 0;
 [v _luz `i ~T0 @X0 1 e ]
 [i _luz
 -> 0 `i
 ]
-"43
-[; ;Sensores.c: 43: int fuerza = 0;
+"42
+[; ;Sensores.c: 42: int fuerza = 0;
 [v _fuerza `i ~T0 @X0 1 e ]
 [i _fuerza
 -> 0 `i
 ]
-"45
-[; ;Sensores.c: 45: uint8_t x = 0, z = 0;
+"44
+[; ;Sensores.c: 44: uint8_t x = 0, z = 0;
 [v _x `uc ~T0 @X0 1 e ]
 [i _x
 -> -> 0 `i `uc
@@ -438,265 +444,265 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-"49
-[; ;Sensores.c: 49: void __attribute__((picinterrupt(("")))) ISR(){
+"48
+[; ;Sensores.c: 48: void __attribute__((picinterrupt(("")))) ISR(){
 [v _ISR `(v ~T1 @X0 1 ef ]
 {
 [e :U _ISR ]
 [f ]
-"50
-[; ;Sensores.c: 50:     (INTCONbits.GIE = 0);
+"49
+[; ;Sensores.c: 49:     (INTCONbits.GIE = 0);
 [e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
-"52
-[; ;Sensores.c: 52:     if (PIR1bits.ADIF == 1 && ADCON0bits.CHS3 == 1 && ADCON0bits.CHS2 == 0 && ADCON0bits.CHS1 == 0 && ADCON0bits.CHS0 == 1){
+"51
+[; ;Sensores.c: 51:     if (PIR1bits.ADIF == 1 && ADCON0bits.CHS3 == 1 && ADCON0bits.CHS2 == 0 && ADCON0bits.CHS1 == 0 && ADCON0bits.CHS0 == 1){
 [e $ ! && && && && == -> . . _PIR1bits 0 6 `i -> 1 `i == -> . . _ADCON0bits 1 5 `i -> 1 `i == -> . . _ADCON0bits 1 4 `i -> 0 `i == -> . . _ADCON0bits 1 3 `i -> 0 `i == -> . . _ADCON0bits 1 2 `i -> 1 `i 140  ]
 {
-"53
-[; ;Sensores.c: 53:         fuerza = ADRESH;
+"52
+[; ;Sensores.c: 52:         fuerza = ADRESH;
 [e = _fuerza -> _ADRESH `i ]
+"53
+[; ;Sensores.c: 53:         ADCON0bits.CHS3 = 1;
+[e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
 "54
-[; ;Sensores.c: 54:         analogInSel(8);
-[e ( _analogInSel (1 -> -> 8 `i `uc ]
+[; ;Sensores.c: 54:         ADCON0bits.CHS2 = 0;
+[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
 "55
-[; ;Sensores.c: 55:         PIR1bits.ADIF = 0;
-[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+[; ;Sensores.c: 55:         ADCON0bits.CHS1 = 0;
+[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
 "56
-[; ;Sensores.c: 56:     }
+[; ;Sensores.c: 56:         ADCON0bits.CHS0 = 0;
+[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
+"57
+[; ;Sensores.c: 57:         PIR1bits.ADIF = 0;
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+"58
+[; ;Sensores.c: 58:     }
 }
 [e $U 141  ]
-"58
-[; ;Sensores.c: 58:     else if (PIR1bits.ADIF == 1 && ADCON0bits.CHS3 == 1 && ADCON0bits.CHS2 == 0 && ADCON0bits.CHS1 == 0 && ADCON0bits.CHS0 == 0){
+"60
+[; ;Sensores.c: 60:     else if (PIR1bits.ADIF == 1 && ADCON0bits.CHS3 == 1 && ADCON0bits.CHS2 == 0 && ADCON0bits.CHS1 == 0 && ADCON0bits.CHS0 == 0){
 [e :U 140 ]
 [e $ ! && && && && == -> . . _PIR1bits 0 6 `i -> 1 `i == -> . . _ADCON0bits 1 5 `i -> 1 `i == -> . . _ADCON0bits 1 4 `i -> 0 `i == -> . . _ADCON0bits 1 3 `i -> 0 `i == -> . . _ADCON0bits 1 2 `i -> 0 `i 142  ]
 {
-"59
-[; ;Sensores.c: 59:         luz = ADRESH;
-[e = _luz -> _ADRESH `i ]
-"60
-[; ;Sensores.c: 60:         analogInSel(9);
-[e ( _analogInSel (1 -> -> 9 `i `uc ]
 "61
-[; ;Sensores.c: 61:         PIR1bits.ADIF = 0;
-[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+[; ;Sensores.c: 61:         luz = ADRESH;
+[e = _luz -> _ADRESH `i ]
 "62
-[; ;Sensores.c: 62:     }
+[; ;Sensores.c: 62:         ADCON0bits.CHS3 = 1;
+[e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
+"63
+[; ;Sensores.c: 63:         ADCON0bits.CHS2 = 0;
+[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
+"64
+[; ;Sensores.c: 64:         ADCON0bits.CHS1 = 0;
+[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
+"65
+[; ;Sensores.c: 65:         ADCON0bits.CHS0 = 1;
+[e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
+"66
+[; ;Sensores.c: 66:         PIR1bits.ADIF = 0;
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+"67
+[; ;Sensores.c: 67:     }
 }
 [e :U 142 ]
 [e :U 141 ]
-"64
-[; ;Sensores.c: 64:     if (PIR1bits.SSPIF == 1){
+"69
+[; ;Sensores.c: 69:     if (PIR1bits.SSPIF == 1){
 [e $ ! == -> . . _PIR1bits 0 3 `i -> 1 `i 143  ]
 {
-"65
-[; ;Sensores.c: 65:         SSPCONbits.CKP = 0;
+"70
+[; ;Sensores.c: 70:         SSPCONbits.CKP = 0;
 [e = . . _SSPCONbits 0 1 -> -> 0 `i `uc ]
-"66
-[; ;Sensores.c: 66:         if (SSPCONbits.WCOL == 1 || SSPCONbits.SSPOV == 1){
+"71
+[; ;Sensores.c: 71:         if (SSPCONbits.WCOL == 1 || SSPCONbits.SSPOV == 1){
 [e $ ! || == -> . . _SSPCONbits 0 4 `i -> 1 `i == -> . . _SSPCONbits 0 3 `i -> 1 `i 144  ]
 {
-"67
-[; ;Sensores.c: 67:             x = SSPBUF;
+"72
+[; ;Sensores.c: 72:             x = SSPBUF;
 [e = _x _SSPBUF ]
-"68
-[; ;Sensores.c: 68:             SSPCONbits.WCOL = 0;
+"73
+[; ;Sensores.c: 73:             SSPCONbits.WCOL = 0;
 [e = . . _SSPCONbits 0 4 -> -> 0 `i `uc ]
-"69
-[; ;Sensores.c: 69:             SSPCONbits.SSPOV = 0;
+"74
+[; ;Sensores.c: 74:             SSPCONbits.SSPOV = 0;
 [e = . . _SSPCONbits 0 3 -> -> 0 `i `uc ]
-"70
-[; ;Sensores.c: 70:             SSPCONbits.CKP = 1;
+"75
+[; ;Sensores.c: 75:             SSPCONbits.CKP = 1;
 [e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
-"71
-[; ;Sensores.c: 71:         }
+"76
+[; ;Sensores.c: 76:         }
 }
 [e :U 144 ]
-"72
-[; ;Sensores.c: 72:         if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW){
+"77
+[; ;Sensores.c: 77:         if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW){
 [e $ ! && ! != -> . . _SSPSTATbits 0 5 `i -> 0 `i ! != -> . . _SSPSTATbits 0 2 `i -> 0 `i 145  ]
 {
-"73
-[; ;Sensores.c: 73:             x = SSPBUF;
+"78
+[; ;Sensores.c: 78:             x = SSPBUF;
 [e = _x _SSPBUF ]
-"74
-[; ;Sensores.c: 74:             while(!SSPSTATbits.BF);
+"80
+[; ;Sensores.c: 80:             PIR1bits.SSPIF = 0;
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+"81
+[; ;Sensores.c: 81:             SSPCONbits.CKP = 1;
+[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
+"82
+[; ;Sensores.c: 82:             while(!SSPSTATbits.BF);
 [e $U 146  ]
 [e :U 147 ]
 [e :U 146 ]
 [e $ ! != -> . . _SSPSTATbits 0 0 `i -> 0 `i 147  ]
 [e :U 148 ]
-"75
-[; ;Sensores.c: 75:             z = SSPBUF;
+"83
+[; ;Sensores.c: 83:             z = SSPBUF;
 [e = _z _SSPBUF ]
-"76
-[; ;Sensores.c: 76:             SSPCONbits.CKP = 1;
-[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
-"77
-[; ;Sensores.c: 77:         }
+"84
+[; ;Sensores.c: 84:             PORTA = z;
+[e = _PORTA _z ]
+"85
+[; ;Sensores.c: 85:             _delay((unsigned long)((250)*(4000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"86
+[; ;Sensores.c: 86:         }
 }
 [e $U 149  ]
-"78
-[; ;Sensores.c: 78:         else if (!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
+"87
+[; ;Sensores.c: 87:         else if (!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
 [e :U 145 ]
 [e $ ! && ! != -> . . _SSPSTATbits 0 5 `i -> 0 `i != -> . . _SSPSTATbits 0 2 `i -> 0 `i 150  ]
 {
-"79
-[; ;Sensores.c: 79:             x = SSPBUF;
-[e = _x _SSPBUF ]
-"80
-[; ;Sensores.c: 80:             SSPSTATbits.BF = 0;
-[e = . . _SSPSTATbits 0 0 -> -> 0 `i `uc ]
-"81
-[; ;Sensores.c: 81:             if (z == 0x01){
-[e $ ! == -> _z `i -> 1 `i 151  ]
-{
-"82
-[; ;Sensores.c: 82:                 x = SSPBUF;
-[e = _x _SSPBUF ]
-"83
-[; ;Sensores.c: 83:                 SSPBUF = fuerza;
-[e = _SSPBUF -> _fuerza `uc ]
-"84
-[; ;Sensores.c: 84:                 SSPCONbits.CKP = 1;
-[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
-"85
-[; ;Sensores.c: 85:             }
-}
-[e $U 152  ]
-"86
-[; ;Sensores.c: 86:             else if (z == 0x02){
-[e :U 151 ]
-[e $ ! == -> _z `i -> 2 `i 153  ]
-{
-"87
-[; ;Sensores.c: 87:                 x = SSPBUF;
-[e = _x _SSPBUF ]
 "88
-[; ;Sensores.c: 88:                 SSPBUF = luz;
-[e = _SSPBUF -> _luz `uc ]
+[; ;Sensores.c: 88:             x = SSPBUF;
+[e = _x _SSPBUF ]
 "89
-[; ;Sensores.c: 89:                 SSPCONbits.CKP = 1;
-[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
+[; ;Sensores.c: 89:             SSPSTATbits.BF = 0;
+[e = . . _SSPSTATbits 0 0 -> -> 0 `i `uc ]
 "90
-[; ;Sensores.c: 90:             }
-}
-[e :U 153 ]
+[; ;Sensores.c: 90:             SSPBUF = fuerza;
+[e = _SSPBUF -> _fuerza `uc ]
+"91
+[; ;Sensores.c: 91:             SSPCONbits.CKP = 1;
+[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
+"92
+[; ;Sensores.c: 92:             _delay((unsigned long)((250)*(4000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"93
+[; ;Sensores.c: 93:             while(SSPSTATbits.BF);
+[e $U 151  ]
 [e :U 152 ]
-"96
-[; ;Sensores.c: 96:             _delay((unsigned long)((300)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"97
-[; ;Sensores.c: 97:             while(SSPSTATbits.BF);
-[e $U 154  ]
-[e :U 155 ]
-[e :U 154 ]
-[e $ != -> . . _SSPSTATbits 0 0 `i -> 0 `i 155  ]
-[e :U 156 ]
-"98
-[; ;Sensores.c: 98:         }
+[e :U 151 ]
+[e $ != -> . . _SSPSTATbits 0 0 `i -> 0 `i 152  ]
+[e :U 153 ]
+"94
+[; ;Sensores.c: 94:         }
 }
 [e :U 150 ]
 [e :U 149 ]
-"99
-[; ;Sensores.c: 99:         PIR1bits.SSPIF = 0;
+"95
+[; ;Sensores.c: 95:         PIR1bits.SSPIF = 0;
 [e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-"100
-[; ;Sensores.c: 100:     }
+"96
+[; ;Sensores.c: 96:     }
 }
 [e :U 143 ]
-"107
-[; ;Sensores.c: 107:     (INTCONbits.GIE = 1);
+"97
+[; ;Sensores.c: 97:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"108
-[; ;Sensores.c: 108: }
+"98
+[; ;Sensores.c: 98: }
 [e :UE 139 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"110
-[; ;Sensores.c: 110: void main(void) {
+"100
+[; ;Sensores.c: 100: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"111
-[; ;Sensores.c: 111:     setup();
+"101
+[; ;Sensores.c: 101:     setup();
 [e ( _setup ..  ]
-"112
-[; ;Sensores.c: 112:     oscInit(1);
+"102
+[; ;Sensores.c: 102:     oscInit(1);
 [e ( _oscInit (1 -> -> 1 `i `uc ]
-"113
-[; ;Sensores.c: 113:     adcSetup();
+"103
+[; ;Sensores.c: 103:     adcSetup();
 [e ( _adcSetup ..  ]
-"114
-[; ;Sensores.c: 114:     adcFoscSel(1);
+"104
+[; ;Sensores.c: 104:     adcFoscSel(1);
 [e ( _adcFoscSel (1 -> -> 1 `i `uc ]
-"115
-[; ;Sensores.c: 115:     analogInSel(9);
+"105
+[; ;Sensores.c: 105:     analogInSel(9);
 [e ( _analogInSel (1 -> -> 9 `i `uc ]
-"116
-[; ;Sensores.c: 116:     adcInterrupt(1);
+"106
+[; ;Sensores.c: 106:     adcInterrupt(1);
 [e ( _adcInterrupt (1 -> -> 1 `i `uc ]
-"117
-[; ;Sensores.c: 117:     i2c_slave_init(0x10);
+"107
+[; ;Sensores.c: 107:     (INTCONbits.GIE = 0);
+[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
+"108
+[; ;Sensores.c: 108:     i2c_slave_init(0x10);
 [e ( _i2c_slave_init (1 -> -> 16 `i `s ]
-"118
-[; ;Sensores.c: 118:     while(1){
-[e :U 159 ]
+"109
+[; ;Sensores.c: 109:     (INTCONbits.GIE = 1);
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+"110
+[; ;Sensores.c: 110:     while(1){
+[e :U 156 ]
 {
-"120
-[; ;Sensores.c: 120:         if (ADCON0bits.GO_DONE == 0){
-[e $ ! == -> . . _ADCON0bits 3 1 `i -> 0 `i 161  ]
+"112
+[; ;Sensores.c: 112:         if (ADCON0bits.GO_DONE == 0){
+[e $ ! == -> . . _ADCON0bits 3 1 `i -> 0 `i 158  ]
 {
-"121
-[; ;Sensores.c: 121:             ADCON0bits.GO_DONE = 1;
+"113
+[; ;Sensores.c: 113:             ADCON0bits.GO_DONE = 1;
 [e = . . _ADCON0bits 3 1 -> -> 1 `i `uc ]
-"122
-[; ;Sensores.c: 122:         }
-}
-[e :U 161 ]
-"155
-[; ;Sensores.c: 155:     }
+"114
+[; ;Sensores.c: 114:         }
 }
 [e :U 158 ]
-[e $U 159  ]
-[e :U 160 ]
-"156
-[; ;Sensores.c: 156:     return;
-[e $UE 157  ]
-"157
-[; ;Sensores.c: 157: }
-[e :UE 157 ]
+"115
+[; ;Sensores.c: 115:     }
 }
-"159
-[; ;Sensores.c: 159: void setup(void){
+[e :U 155 ]
+[e $U 156  ]
+[e :U 157 ]
+"116
+[; ;Sensores.c: 116:     return;
+[e $UE 154  ]
+"117
+[; ;Sensores.c: 117: }
+[e :UE 154 ]
+}
+"119
+[; ;Sensores.c: 119: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"160
-[; ;Sensores.c: 160:     TRISBbits.TRISB0 = 1;
-[e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
-"161
-[; ;Sensores.c: 161:     TRISBbits.TRISB1 = 1;
-[e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
-"162
-[; ;Sensores.c: 162:     TRISBbits.TRISB3 = 0;
-[e = . . _TRISBbits 0 3 -> -> 0 `i `uc ]
-"163
-[; ;Sensores.c: 163:     TRISBbits.TRISB3 = 1;
+"120
+[; ;Sensores.c: 120:     TRISA = 0x00;
+[e = _TRISA -> -> 0 `i `uc ]
+"121
+[; ;Sensores.c: 121:     PORTA = 0x00;
+[e = _PORTA -> -> 0 `i `uc ]
+"122
+[; ;Sensores.c: 122:     TRISBbits.TRISB3 = 1;
 [e = . . _TRISBbits 0 3 -> -> 1 `i `uc ]
-"164
-[; ;Sensores.c: 164:     TRISBbits.TRISB4 = 1;
-[e = . . _TRISBbits 0 4 -> -> 1 `i `uc ]
-"165
-[; ;Sensores.c: 165:     ANSEL = 0;
+"123
+[; ;Sensores.c: 123:     TRISBbits.TRISB2 = 1;
+[e = . . _TRISBbits 0 2 -> -> 1 `i `uc ]
+"124
+[; ;Sensores.c: 124:     ANSEL = 0;
 [e = _ANSEL -> -> 0 `i `uc ]
-"166
-[; ;Sensores.c: 166:     ANSELHbits.ANS9 = 1;
+"125
+[; ;Sensores.c: 125:     ANSELHbits.ANS9 = 1;
 [e = . . _ANSELHbits 0 1 -> -> 1 `i `uc ]
-"167
-[; ;Sensores.c: 167:     ANSELHbits.ANS11 = 1;
+"126
+[; ;Sensores.c: 126:     ANSELHbits.ANS11 = 1;
 [e = . . _ANSELHbits 0 3 -> -> 1 `i `uc ]
-"168
-[; ;Sensores.c: 168: }
-[e :UE 162 ]
+"127
+[; ;Sensores.c: 127: }
+[e :UE 159 ]
 }

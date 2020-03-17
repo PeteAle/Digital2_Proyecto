@@ -3,4 +3,6 @@ master.c  \
 I2C.h  \
 LCD.h  \
 OSCCON.h  \
-TMR1.h 
+MPU6050.h  \
+TMR1.h  \
+ADC.h 

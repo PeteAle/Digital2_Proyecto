@@ -2760,13 +2760,6 @@ unsigned char analogInSel(unsigned char analogIn);
 unsigned char adcFoscSel(unsigned char fosc);
 # 36 "Sensores.c" 2
 
-# 1 "./TMR1.h" 1
-# 36 "./TMR1.h"
-void tmr1_Init(void);
-void tmr1_Prescaler(unsigned char prescaler);
-void tmr1_Interrupt(unsigned char tmr1_Int);
-# 37 "Sensores.c" 2
-
 # 1 "./I2C.h" 1
 # 40 "./I2C.h"
 void i2c_master_init(unsigned long c);
@@ -2777,7 +2770,7 @@ void i2c_masterStop(void);
 void i2c_masterWrite(unsigned int data);
 unsigned short i2c_masterRead(unsigned short a);
 void i2c_slave_init(short address);
-# 38 "Sensores.c" 2
+# 37 "Sensores.c" 2
 
 
 
@@ -2794,13 +2787,19 @@ void __attribute__((picinterrupt(("")))) ISR(){
 
     if (PIR1bits.ADIF == 1 && ADCON0bits.CHS3 == 1 && ADCON0bits.CHS2 == 0 && ADCON0bits.CHS1 == 0 && ADCON0bits.CHS0 == 1){
         fuerza = ADRESH;
-        analogInSel(8);
+        ADCON0bits.CHS3 = 1;
+        ADCON0bits.CHS2 = 0;
+        ADCON0bits.CHS1 = 0;
+        ADCON0bits.CHS0 = 0;
         PIR1bits.ADIF = 0;
     }
 
     else if (PIR1bits.ADIF == 1 && ADCON0bits.CHS3 == 1 && ADCON0bits.CHS2 == 0 && ADCON0bits.CHS1 == 0 && ADCON0bits.CHS0 == 0){
         luz = ADRESH;
-        analogInSel(9);
+        ADCON0bits.CHS3 = 1;
+        ADCON0bits.CHS2 = 0;
+        ADCON0bits.CHS1 = 0;
+        ADCON0bits.CHS0 = 1;
         PIR1bits.ADIF = 0;
     }
 
@@ -2814,39 +2813,24 @@ void __attribute__((picinterrupt(("")))) ISR(){
         }
         if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW){
             x = SSPBUF;
+
+            PIR1bits.SSPIF = 0;
+            SSPCONbits.CKP = 1;
             while(!SSPSTATbits.BF);
             z = SSPBUF;
-            SSPCONbits.CKP = 1;
+            PORTA = z;
+            _delay((unsigned long)((250)*(4000000/4000000.0)));
         }
         else if (!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
             x = SSPBUF;
             SSPSTATbits.BF = 0;
-            if (z == 0x01){
-                x = SSPBUF;
-                SSPBUF = fuerza;
-                SSPCONbits.CKP = 1;
-            }
-            else if (z == 0x02){
-                x = SSPBUF;
-                SSPBUF = luz;
-                SSPCONbits.CKP = 1;
-            }
-
-
-
-
-
-            _delay((unsigned long)((300)*(4000000/4000000.0)));
+            SSPBUF = fuerza;
+            SSPCONbits.CKP = 1;
+            _delay((unsigned long)((250)*(4000000/4000000.0)));
             while(SSPSTATbits.BF);
         }
         PIR1bits.SSPIF = 0;
     }
-
-
-
-
-
-
     (INTCONbits.GIE = 1);
 }
 
@@ -2857,23 +2841,23 @@ void main(void) {
     adcFoscSel(1);
     analogInSel(9);
     adcInterrupt(1);
+    (INTCONbits.GIE = 0);
     i2c_slave_init(0x10);
+    (INTCONbits.GIE = 1);
     while(1){
 
         if (ADCON0bits.GO_DONE == 0){
             ADCON0bits.GO_DONE = 1;
         }
-# 155 "Sensores.c"
     }
     return;
 }
 
 void setup(void){
-    TRISBbits.TRISB0 = 1;
-    TRISBbits.TRISB1 = 1;
-    TRISBbits.TRISB3 = 0;
+    TRISA = 0x00;
+    PORTA = 0x00;
     TRISBbits.TRISB3 = 1;
-    TRISBbits.TRISB4 = 1;
+    TRISBbits.TRISB2 = 1;
     ANSEL = 0;
     ANSELHbits.ANS9 = 1;
     ANSELHbits.ANS11 = 1;

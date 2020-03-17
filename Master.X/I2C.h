@@ -43,8 +43,8 @@ void i2c_masterStart(void);
 void i2c_addr_start(char addr);
 void i2c_masterRStart(void);
 void i2c_masterStop(void);
-//void i2c_masterWrite(unsigned int data);
-unsigned char i2c_masterWrite(unsigned char data);
+void i2c_masterWrite(unsigned char data);
+//unsigned char i2c_masterWrite(unsigned char data);
 unsigned short  i2c_masterRead(unsigned short a);
 
 #endif	/* XC_HEADER_TEMPLATE_H */

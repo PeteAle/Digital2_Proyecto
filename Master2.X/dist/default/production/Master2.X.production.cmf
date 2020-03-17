@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\Peter\AppData\Local\Temp\sdd4.o
+$C:\Users\Peter\AppData\Local\Temp\sclc.o
 end_init CODE 0 0 0 3 2
 config CONFIG 0 2007 2007 2 2
 $dist/default/production\Master2.X.production.o
@@ -76,15 +76,15 @@ STRING 800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Master2.X.production.o
-7F8 cinit CODE >1113:C:\Users\Peter\AppData\Local\Temp\sdd4.s
-7F8 cinit CODE >1116:C:\Users\Peter\AppData\Local\Temp\sdd4.s
-7F8 cinit CODE >1130:C:\Users\Peter\AppData\Local\Temp\sdd4.s
-7F9 cinit CODE >1131:C:\Users\Peter\AppData\Local\Temp\sdd4.s
-7FA cinit CODE >1132:C:\Users\Peter\AppData\Local\Temp\sdd4.s
-7FB cinit CODE >1133:C:\Users\Peter\AppData\Local\Temp\sdd4.s
-7FC cinit CODE >1139:C:\Users\Peter\AppData\Local\Temp\sdd4.s
-7FC cinit CODE >1141:C:\Users\Peter\AppData\Local\Temp\sdd4.s
-7FD cinit CODE >1142:C:\Users\Peter\AppData\Local\Temp\sdd4.s
+7F8 cinit CODE >1113:C:\Users\Peter\AppData\Local\Temp\sclc.s
+7F8 cinit CODE >1116:C:\Users\Peter\AppData\Local\Temp\sclc.s
+7F8 cinit CODE >1130:C:\Users\Peter\AppData\Local\Temp\sclc.s
+7F9 cinit CODE >1131:C:\Users\Peter\AppData\Local\Temp\sclc.s
+7FA cinit CODE >1132:C:\Users\Peter\AppData\Local\Temp\sclc.s
+7FB cinit CODE >1133:C:\Users\Peter\AppData\Local\Temp\sclc.s
+7FC cinit CODE >1139:C:\Users\Peter\AppData\Local\Temp\sclc.s
+7FC cinit CODE >1141:C:\Users\Peter\AppData\Local\Temp\sclc.s
+7FD cinit CODE >1142:C:\Users\Peter\AppData\Local\Temp\sclc.s
 5A7 text11 CODE >122:C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Master2.X\ADC.c
 5A8 text11 CODE >123:C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Master2.X\ADC.c
 5A9 text11 CODE >124:C:\Users\Peter\Documents\GitHub\Digital2_Proyecto\Master2.X\ADC.c
@@ -363,22 +363,22 @@ __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 _i2c_wait ADC 0 CODE 0 text8 dist/default/production\Master2.X.production.o
 _T1CONbits 10 0 ABS 0 - dist/default/production\Master2.X.production.o
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\Peter\AppData\Local\Temp\sdd4.o
+___sp 0 0 STACK 2 stack C:\Users\Peter\AppData\Local\Temp\sclc.o
 _main DBE 0 CODE 0 maintext dist/default/production\Master2.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Master2.X.production.o
 __size_of_oscInit 0 0 ABS 0 - dist/default/production\Master2.X.production.o
-start 0 0 CODE 0 init C:\Users\Peter\AppData\Local\Temp\sdd4.o
+start 0 0 CODE 0 init C:\Users\Peter\AppData\Local\Temp\sclc.o
 __end_of_i2c_wait AF6 0 CODE 0 text8 dist/default/production\Master2.X.production.o
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production\Master2.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Master2.X.production.o
 __size_of___lldiv 0 0 ABS 0 - dist/default/production\Master2.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\Peter\AppData\Local\Temp\sdd4.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\Peter\AppData\Local\Temp\sdd4.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\Peter\AppData\Local\Temp\sdd4.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\Peter\AppData\Local\Temp\sdd4.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\Peter\AppData\Local\Temp\sdd4.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\Peter\AppData\Local\Temp\sdd4.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\Peter\AppData\Local\Temp\sclc.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\Peter\AppData\Local\Temp\sclc.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\Peter\AppData\Local\Temp\sclc.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\Peter\AppData\Local\Temp\sclc.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\Peter\AppData\Local\Temp\sclc.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\Peter\AppData\Local\Temp\sclc.o
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\Master2.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\Master2.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -388,8 +388,8 @@ _i2c_masterStop ACA 0 CODE 0 text6 dist/default/production\Master2.X.production.
 __Lmaintext 0 0 ABS 0 maintext -
 __end_of_oscInit DBE 0 CODE 0 text4 dist/default/production\Master2.X.production.o
 __end_of___lldiv CD4 0 CODE 0 text3 dist/default/production\Master2.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\Peter\AppData\Local\Temp\sdd4.o
-___stacklo 0 0 ABS 0 - C:\Users\Peter\AppData\Local\Temp\sdd4.o
+___stackhi 0 0 ABS 0 - C:\Users\Peter\AppData\Local\Temp\sclc.o
+___stacklo 0 0 ABS 0 - C:\Users\Peter\AppData\Local\Temp\sclc.o
 __size_of_setup 0 0 ABS 0 - dist/default/production\Master2.X.production.o
 ___lldiv@counter 7D 0 COMMON 1 cstackCOMMON dist/default/production\Master2.X.production.o
 __CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production\Master2.X.production.o
@@ -406,7 +406,7 @@ __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\Master2.X.produc
 _SSPADD 93 0 ABS 0 - dist/default/production\Master2.X.production.o
 _SSPBUF 13 0 ABS 0 - dist/default/production\Master2.X.production.o
 _SSPCON 14 0 ABS 0 - dist/default/production\Master2.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\Peter\AppData\Local\Temp\sdd4.o
+___int_sp 0 0 STACK 2 stack C:\Users\Peter\AppData\Local\Temp\sclc.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -452,7 +452,7 @@ __CFG_BOR4V$BOR40V 0 0 ABS 0 - dist/default/production\Master2.X.production.o
 __CFG_FOSC$INTRC_NOCLKOUT 0 0 ABS 0 - dist/default/production\Master2.X.production.o
 __Lintentry 0 0 CODE 0 intentry -
 ___lldiv@divisor 70 0 COMMON 1 cstackCOMMON dist/default/production\Master2.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Peter\AppData\Local\Temp\sdd4.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Peter\AppData\Local\Temp\sclc.o
 __size_of_adcSetup 0 0 ABS 0 - dist/default/production\Master2.X.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 __size_of_analogInSel 0 0 ABS 0 - dist/default/production\Master2.X.production.o

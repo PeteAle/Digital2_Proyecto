@@ -116,13 +116,7 @@ unsigned char analogInSel(unsigned char analogIn) {
             ADCON0bits.CHS0 = 1;
             break;
     }
-    return(ADCON0bits.CHS);
-}
-
-unsigned char currentAnalogCh(void){
-    unsigned char currentChannel = 0;
-    currentChannel = (ADCON0bits.CHS & 0b00111100);
-    return currentChannel;
+    return(analogIn);
 }
 
 unsigned char adcFoscSel(unsigned char fosc){

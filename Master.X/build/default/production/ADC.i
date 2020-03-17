@@ -1,4 +1,4 @@
-# 1 "master.c"
+# 1 "ADC.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,22 +6,10 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "master.c" 2
-# 13 "master.c"
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
+# 1 "ADC.c" 2
 
 
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
+
 
 
 
@@ -2511,284 +2499,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 31 "master.c" 2
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 1 3
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\__size_t.h" 1 3
-
-
-
-typedef unsigned size_t;
-# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\__null.h" 1 3
-# 5 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
-
-
-
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdarg.h" 1 3
-
-
-
-
-
-
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-# 11 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
-# 43 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 3
-struct __prbuf
-{
- char * ptr;
- void (* func)(char);
-};
-# 85 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 3
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\conio.h" 1 3
-
-
-
-
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\errno.h" 1 3
-# 29 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\errno.h" 3
-extern int errno;
-# 8 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\conio.h" 2 3
-
-
-
-
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-
-
-extern char * cgets(char *);
-extern void cputs(const char *);
-# 85 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
-
-
-
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-# 180 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 3
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-# 32 "master.c" 2
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
-# 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int8_t;
-
-
-
-
-
-
-typedef signed int int16_t;
-
-
-
-
-
-
-
-typedef __int24 int24_t;
-
-
-
-
-
-
-
-typedef signed long int int32_t;
-# 52 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint8_t;
-
-
-
-
-
-typedef unsigned int uint16_t;
-
-
-
-
-
-
-typedef __uint24 uint24_t;
-
-
-
-
-
-
-typedef unsigned long int uint32_t;
-# 88 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_least8_t;
-
-
-
-
-
-
-
-typedef signed int int_least16_t;
-# 109 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_least24_t;
-# 118 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed long int int_least32_t;
-# 136 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_least8_t;
-
-
-
-
-
-
-typedef unsigned int uint_least16_t;
-# 154 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_least24_t;
-
-
-
-
-
-
-
-typedef unsigned long int uint_least32_t;
-# 181 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_fast8_t;
-
-
-
-
-
-
-typedef signed int int_fast16_t;
-# 200 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_fast24_t;
-
-
-
-
-
-
-
-typedef signed long int int_fast32_t;
-# 224 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_fast8_t;
-
-
-
-
-
-typedef unsigned int uint_fast16_t;
-# 240 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_fast24_t;
-
-
-
-
-
-
-typedef unsigned long int uint_fast32_t;
-# 268 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef int32_t intmax_t;
-# 282 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef uint32_t uintmax_t;
-
-
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-# 33 "master.c" 2
-
-# 1 "./I2C.h" 1
-# 40 "./I2C.h"
-void i2c_master_init(unsigned long c);
-void i2c_masterWait(void);
-void i2c_masterStart(void);
-void i2c_addr_start(char addr);
-void i2c_masterRStart(void);
-void i2c_masterStop(void);
-void i2c_masterWrite(unsigned char data);
-
-unsigned short i2c_masterRead(unsigned short a);
-# 34 "master.c" 2
-
-# 1 "./LCD.h" 1
-# 36 "./LCD.h"
-void lcd8_init(void);
-void lcd8_cmd(unsigned char cmd);
-void lcd8_write(unsigned int dat);
-void lcd8_dispString(char *value);
-void lcd8_dispChar(char val_num);
-void lcd8_setCursor(unsigned char fila, unsigned char columna);
-void lcd8_clearDisplay(void);
-void delay_1ms(void);
-# 35 "master.c" 2
-
-# 1 "./OSCCON.h" 1
-# 36 "./OSCCON.h"
-unsigned char oscInit(unsigned char freq);
-# 36 "master.c" 2
-
-# 1 "./MPU6050.h" 1
-# 119 "./MPU6050.h"
-void mpu6050_init(void);
-void mpu6050_read(void);
-# 37 "master.c" 2
-
-# 1 "./TMR1.h" 1
-# 36 "./TMR1.h"
-void tmr1_Init(void);
-void tmr1_Prescaler(unsigned char prescaler);
-void tmr1_Interrupt(unsigned char tmr1_Int);
-# 38 "master.c" 2
+# 9 "ADC.c" 2
 
 # 1 "./ADC.h" 1
 # 36 "./ADC.h"
@@ -2796,161 +2507,133 @@ void adcSetup(void);
 void adcInterrupt(unsigned char en);
 unsigned char analogInSel(unsigned char analogIn);
 unsigned char adcFoscSel(unsigned char fosc);
-# 39 "master.c" 2
+# 10 "ADC.c" 2
 
 
-
-
-
-
-
-unsigned char i = 1;
-uint16_t distancia = 0, acel = 0, gyro = 0;
-uint8_t fuerza = 0, luz = 0;
-uint16_t Ax = 0, Ay = 0, Az = 0, T = 0, Gx = 0, Gy = 0, Gz = 0;
-
-void setup(void);
-
-void __attribute__((picinterrupt(("")))) isr(){
-
+void adcSetup(void){
+    ADCON0bits.ADON = 1;
+    ADCON1bits.ADFM = 0;
+    ADCON1bits.VCFG1 = 0;
+    ADCON1bits.VCFG0 = 0;
 }
 
-void main(void){
-    setup();
-    oscInit(1);
-    tmr1_Init();
-    tmr1_Prescaler(1);
-    tmr1_Interrupt(0);
-    adcSetup();
-    adcFoscSel(1);
-    analogInSel(9);
-    adcInterrupt(0);
-    i2c_master_init(100000);
-    mpu6050_init();
-    lcd8_init();
-    while(1){
-
-        if (ADCON0bits.GO_DONE == 0){
-            ADCON0bits.GO_DONE = 1;
-        }
-        luz = ADRESH;
-
-        i2c_addr_start(0x11);
-        fuerza = i2c_masterRead(0);
-        i2c_masterStop();
-        _delay((unsigned long)((10)*(4000000/4000.0)));
-
-        if (luz < 5){
-            PORTBbits.RB4 = 1;
-        }
-        else if (luz > 6){
-            PORTBbits.RB4 = 0;
-        }
-
-        i2c_addr_start(0xD0);
-        i2c_masterWrite(0x3D);
-        i2c_masterStop();
-        i2c_addr_start(0xD1);
-        unsigned char Ayh = i2c_masterRead(0);
-        i2c_masterStop();
-        i2c_addr_start(0xD0);
-        i2c_masterWrite(0x43);
-        i2c_masterStop();
-        i2c_addr_start(0xD1);
-        unsigned char Gxh = i2c_masterRead(0);
-        i2c_masterStop();
-
-        TMR1H = 0;
-        TMR1L = 0;
-        PORTBbits.RB0 = 1;
-        _delay((unsigned long)((10)*(4000000/4000000.0)));
-        PORTBbits.RB0 = 0;
-        while(!PORTBbits.RB1);
-        T1CONbits.TMR1ON = 1;
-        while(PORTBbits.RB1);
-        T1CONbits.TMR1ON = 0;
-
-        distancia = (TMR1L | (TMR1H<<8));
-        distancia = distancia/29;
-        distancia = distancia + 1;
-
-        if (distancia <= 8 && distancia >= 7){
-            PORTBbits.RB2 = 1;
-            _delay((unsigned long)((300)*(4000000/4000.0)));
-            PORTBbits.RB2 = 0;
-            _delay((unsigned long)((300)*(4000000/4000.0)));
-        }
-        if (distancia <= 6 && distancia >= 5){
-            PORTBbits.RB2 = 1;
-            _delay((unsigned long)((300)*(4000000/4000.0)));
-            PORTBbits.RB2 = 0;
-            _delay((unsigned long)((100)*(4000000/4000.0)));
-        }
-        if (distancia < 5){
-            PORTBbits.RB2 = 1;
-        }
-
-        char D[5];
-        sprintf(D ,"%3u", distancia);
-        lcd8_setCursor(1,0);
-        delay_1ms();
-        lcd8_dispString("d:");
-        delay_1ms();
-        lcd8_setCursor(1,2);
-        delay_1ms();
-        lcd8_dispString(D);
-        delay_1ms();
-        lcd8_setCursor(1,5);
-        delay_1ms();
-        lcd8_dispString("cm");
-        delay_1ms();
-
-        char F[5];
-        sprintf(F, "%3u", fuerza);
-        lcd8_setCursor(1,8);
-        delay_1ms();
-        lcd8_dispString("f:");
-        delay_1ms();
-        lcd8_setCursor(1,10);
-        delay_1ms();
-        lcd8_dispString(F);
-        delay_1ms();
-
-        char G[10];
-        sprintf(G, "%3u", Gxh);
-        lcd8_setCursor(2,0);
-        delay_1ms();
-        lcd8_dispString("Gx:");
-        delay_1ms();
-        lcd8_setCursor(2,3);
-        delay_1ms();
-        lcd8_dispString(G);
-        _delay((unsigned long)((200)*(4000000/4000.0)));
-
-        char A[10];
-        sprintf(A, "%3u", Ayh);
-        lcd8_setCursor(2,8);
-        delay_1ms();
-        lcd8_dispString("Ay:");
-        delay_1ms();
-        lcd8_setCursor(2,11);
-        delay_1ms();
-        lcd8_dispString(A);
-        _delay((unsigned long)((200)*(4000000/4000.0)));
+void adcInterrupt(unsigned char en){
+    switch(en){
+        case 0:
+            PIE1bits.ADIE = 0;
+            PIR1bits.ADIF = 0;
+            break;
+        case 1:
+            PIE1bits.ADIE = 1;
+            PIR1bits.ADIF = 0;
+            break;
     }
-    return;
 }
 
-void setup(void){
-    TRISA = 0x00;
-    TRISBbits.TRISB0 = 0;
-    TRISBbits.TRISB1 = 1;
-    TRISBbits.TRISB2 = 0;
-    TRISBbits.TRISB3 = 1;
-    TRISBbits.TRISB4 = 0;
-    TRISD = 0;
-    PORTD = 0;
-    TRISE = 0;
-    ANSEL = 0;
-    ANSELH = 0;
+unsigned char analogInSel(unsigned char analogIn) {
+    switch(analogIn){
+        case 0:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 0;
+            break;
+        case 1:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 1;
+            break;
+        case 2:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 1;
+            ADCON0bits.CHS0 = 0;
+            break;
+        case 3:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 1;
+            ADCON0bits.CHS0 = 1;
+            break;
+        case 4:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 1;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 0;
+            break;
+        case 5:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 1;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 1;
+            break;
+        case 6:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 1;
+            ADCON0bits.CHS1 = 1;
+            ADCON0bits.CHS0 = 0;
+            break;
+        case 7:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 1;
+            ADCON0bits.CHS1 = 1;
+            ADCON0bits.CHS0 = 1;
+            break;
+        case 8:
+            ADCON0bits.CHS3 = 1;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 0;
+            break;
+        case 9:
+            ADCON0bits.CHS3 = 1;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 1;
+            break;
+        case 10:
+            ADCON0bits.CHS3 = 1;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 1;
+            ADCON0bits.CHS0 = 0;
+            break;
+        case 11:
+            ADCON0bits.CHS3 = 1;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 1;
+            ADCON0bits.CHS0 = 1;
+            break;
+        case 12:
+            ADCON0bits.CHS3 = 1;
+            ADCON0bits.CHS2 = 1;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 0;
+            break;
+        case 13:
+            ADCON0bits.CHS3 = 1;
+            ADCON0bits.CHS2 = 1;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 1;
+            break;
+    }
+    return(analogIn);
+}
+
+unsigned char adcFoscSel(unsigned char fosc){
+    switch(fosc){
+        case 0:
+            ADCON0bits.ADCS1 = 0;
+            ADCON0bits.ADCS0 = 0;
+            break;
+        case 1:
+            ADCON0bits.ADCS1 = 0;
+            ADCON0bits.ADCS0 = 1;
+            break;
+        case 3:
+            ADCON0bits.ADCS1 = 1;
+            ADCON0bits.ADCS0 = 0;
+            break;
+    }
+    return(fosc);
 }

@@ -1,4 +1,4 @@
-# 1 "master.c"
+# 1 "MPU6050.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,22 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "master.c" 2
-# 13 "master.c"
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
+# 1 "MPU6050.c" 2
 
 
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
 
 
 
@@ -2511,7 +2498,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 31 "master.c" 2
+# 8 "MPU6050.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 1 3
 
@@ -2610,7 +2597,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 #pragma printf_check(sprintf) const
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
-# 32 "master.c" 2
+# 9 "MPU6050.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
@@ -2745,7 +2732,42 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 33 "master.c" 2
+# 10 "MPU6050.c" 2
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\math.h" 1 3
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\__unsupported.h" 1 3
+# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\math.h" 2 3
+# 30 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\math.h" 3
+extern double fabs(double);
+extern double floor(double);
+extern double ceil(double);
+extern double modf(double, double *);
+extern double sqrt(double);
+extern double atof(const char *);
+extern double sin(double) ;
+extern double cos(double) ;
+extern double tan(double) ;
+extern double asin(double) ;
+extern double acos(double) ;
+extern double atan(double);
+extern double atan2(double, double) ;
+extern double log(double);
+extern double log10(double);
+extern double pow(double, double) ;
+extern double exp(double) ;
+extern double sinh(double) ;
+extern double cosh(double) ;
+extern double tanh(double);
+extern double eval_poly(double, const double *, int);
+extern double frexp(double, int *);
+extern double ldexp(double, int);
+extern double fmod(double, double);
+extern double trunc(double);
+extern double round(double);
+# 11 "MPU6050.c" 2
 
 # 1 "./I2C.h" 1
 # 40 "./I2C.h"
@@ -2758,45 +2780,13 @@ void i2c_masterStop(void);
 void i2c_masterWrite(unsigned char data);
 
 unsigned short i2c_masterRead(unsigned short a);
-# 34 "master.c" 2
-
-# 1 "./LCD.h" 1
-# 36 "./LCD.h"
-void lcd8_init(void);
-void lcd8_cmd(unsigned char cmd);
-void lcd8_write(unsigned int dat);
-void lcd8_dispString(char *value);
-void lcd8_dispChar(char val_num);
-void lcd8_setCursor(unsigned char fila, unsigned char columna);
-void lcd8_clearDisplay(void);
-void delay_1ms(void);
-# 35 "master.c" 2
-
-# 1 "./OSCCON.h" 1
-# 36 "./OSCCON.h"
-unsigned char oscInit(unsigned char freq);
-# 36 "master.c" 2
+# 12 "MPU6050.c" 2
 
 # 1 "./MPU6050.h" 1
 # 119 "./MPU6050.h"
 void mpu6050_init(void);
 void mpu6050_read(void);
-# 37 "master.c" 2
-
-# 1 "./TMR1.h" 1
-# 36 "./TMR1.h"
-void tmr1_Init(void);
-void tmr1_Prescaler(unsigned char prescaler);
-void tmr1_Interrupt(unsigned char tmr1_Int);
-# 38 "master.c" 2
-
-# 1 "./ADC.h" 1
-# 36 "./ADC.h"
-void adcSetup(void);
-void adcInterrupt(unsigned char en);
-unsigned char analogInSel(unsigned char analogIn);
-unsigned char adcFoscSel(unsigned char fosc);
-# 39 "master.c" 2
+# 13 "MPU6050.c" 2
 
 
 
@@ -2804,153 +2794,44 @@ unsigned char adcFoscSel(unsigned char fosc);
 
 
 
-unsigned char i = 1;
-uint16_t distancia = 0, acel = 0, gyro = 0;
-uint8_t fuerza = 0, luz = 0;
-uint16_t Ax = 0, Ay = 0, Az = 0, T = 0, Gx = 0, Gy = 0, Gz = 0;
+void mpu6050_init(void){
 
-void setup(void);
+  _delay((unsigned long)((100)*(4000000/4000.0)));
 
-void __attribute__((picinterrupt(("")))) isr(){
 
-}
 
-void main(void){
-    setup();
-    oscInit(1);
-    tmr1_Init();
-    tmr1_Prescaler(1);
-    tmr1_Interrupt(0);
-    adcSetup();
-    adcFoscSel(1);
-    analogInSel(9);
-    adcInterrupt(0);
-    i2c_master_init(100000);
-    mpu6050_init();
-    lcd8_init();
-    while(1){
+    i2c_addr_start(0xD0);
+    i2c_masterWrite(0x19);
+    i2c_masterWrite(0x07);
+    i2c_masterStop();
 
-        if (ADCON0bits.GO_DONE == 0){
-            ADCON0bits.GO_DONE = 1;
-        }
-        luz = ADRESH;
 
-        i2c_addr_start(0x11);
-        fuerza = i2c_masterRead(0);
-        i2c_masterStop();
-        _delay((unsigned long)((10)*(4000000/4000.0)));
+    i2c_addr_start(0xD0);
+    i2c_masterWrite(0x6B);
+    i2c_masterWrite(0x00);
+    i2c_masterStop();
 
-        if (luz < 5){
-            PORTBbits.RB4 = 1;
-        }
-        else if (luz > 6){
-            PORTBbits.RB4 = 0;
-        }
 
-        i2c_addr_start(0xD0);
-        i2c_masterWrite(0x3D);
-        i2c_masterStop();
-        i2c_addr_start(0xD1);
-        unsigned char Ayh = i2c_masterRead(0);
-        i2c_masterStop();
-        i2c_addr_start(0xD0);
-        i2c_masterWrite(0x43);
-        i2c_masterStop();
-        i2c_addr_start(0xD1);
-        unsigned char Gxh = i2c_masterRead(0);
-        i2c_masterStop();
+    i2c_addr_start(0xD0);
+    i2c_masterWrite(0x1A);
+    i2c_masterWrite(0x00);
+    i2c_masterStop();
 
-        TMR1H = 0;
-        TMR1L = 0;
-        PORTBbits.RB0 = 1;
-        _delay((unsigned long)((10)*(4000000/4000000.0)));
-        PORTBbits.RB0 = 0;
-        while(!PORTBbits.RB1);
-        T1CONbits.TMR1ON = 1;
-        while(PORTBbits.RB1);
-        T1CONbits.TMR1ON = 0;
 
-        distancia = (TMR1L | (TMR1H<<8));
-        distancia = distancia/29;
-        distancia = distancia + 1;
+    i2c_addr_start(0xD0);
+    i2c_masterWrite(0x1C);
+    i2c_masterWrite(0x00);
+    i2c_masterStop();
 
-        if (distancia <= 8 && distancia >= 7){
-            PORTBbits.RB2 = 1;
-            _delay((unsigned long)((300)*(4000000/4000.0)));
-            PORTBbits.RB2 = 0;
-            _delay((unsigned long)((300)*(4000000/4000.0)));
-        }
-        if (distancia <= 6 && distancia >= 5){
-            PORTBbits.RB2 = 1;
-            _delay((unsigned long)((300)*(4000000/4000.0)));
-            PORTBbits.RB2 = 0;
-            _delay((unsigned long)((100)*(4000000/4000.0)));
-        }
-        if (distancia < 5){
-            PORTBbits.RB2 = 1;
-        }
 
-        char D[5];
-        sprintf(D ,"%3u", distancia);
-        lcd8_setCursor(1,0);
-        delay_1ms();
-        lcd8_dispString("d:");
-        delay_1ms();
-        lcd8_setCursor(1,2);
-        delay_1ms();
-        lcd8_dispString(D);
-        delay_1ms();
-        lcd8_setCursor(1,5);
-        delay_1ms();
-        lcd8_dispString("cm");
-        delay_1ms();
+    i2c_addr_start(0xD0);
+    i2c_masterWrite(0x1B);
+    i2c_masterWrite(0x12);
+    i2c_masterStop();
 
-        char F[5];
-        sprintf(F, "%3u", fuerza);
-        lcd8_setCursor(1,8);
-        delay_1ms();
-        lcd8_dispString("f:");
-        delay_1ms();
-        lcd8_setCursor(1,10);
-        delay_1ms();
-        lcd8_dispString(F);
-        delay_1ms();
 
-        char G[10];
-        sprintf(G, "%3u", Gxh);
-        lcd8_setCursor(2,0);
-        delay_1ms();
-        lcd8_dispString("Gx:");
-        delay_1ms();
-        lcd8_setCursor(2,3);
-        delay_1ms();
-        lcd8_dispString(G);
-        _delay((unsigned long)((200)*(4000000/4000.0)));
-
-        char A[10];
-        sprintf(A, "%3u", Ayh);
-        lcd8_setCursor(2,8);
-        delay_1ms();
-        lcd8_dispString("Ay:");
-        delay_1ms();
-        lcd8_setCursor(2,11);
-        delay_1ms();
-        lcd8_dispString(A);
-        _delay((unsigned long)((200)*(4000000/4000.0)));
-    }
-    return;
-}
-
-void setup(void){
-    TRISA = 0x00;
-    TRISBbits.TRISB0 = 0;
-    TRISBbits.TRISB1 = 1;
-    TRISBbits.TRISB2 = 0;
-    TRISBbits.TRISB3 = 1;
-    TRISBbits.TRISB4 = 0;
-    TRISD = 0;
-    PORTD = 0;
-    TRISE = 0;
-    ANSEL = 0;
-    ANSELH = 0;
+    i2c_addr_start(0xD0);
+    i2c_masterWrite(0x38);
+    i2c_masterWrite(0x01);
+    i2c_masterStop();
 }

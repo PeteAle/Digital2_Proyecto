@@ -34,7 +34,6 @@
 #include <stdio.h>
 #include "OSCCON.h"
 #include "ADC.h"
-#include "TMR1.h"
 #include "I2C.h"
 
 #define _XTAL_FREQ 4000000
@@ -51,13 +50,19 @@ void __interrupt() ISR(){
     //-------------------- ADC del sensor de fuerza ---------------------------
     if (PIR1bits.ADIF == 1 && ADCON0bits.CHS3 == 1 && ADCON0bits.CHS2 == 0 && ADCON0bits.CHS1 == 0 && ADCON0bits.CHS0 == 1){
         fuerza = ADRESH;
-        analogInSel(8);
+        ADCON0bits.CHS3 = 1;
+        ADCON0bits.CHS2 = 0;
+        ADCON0bits.CHS1 = 0;
+        ADCON0bits.CHS0 = 0;
         PIR1bits.ADIF = 0;
     }
     //-------------------- ADC de la fotoresistencia --------------------------
     else if (PIR1bits.ADIF == 1 && ADCON0bits.CHS3 == 1 && ADCON0bits.CHS2 == 0 && ADCON0bits.CHS1 == 0 && ADCON0bits.CHS0 == 0){
         luz = ADRESH;
-        analogInSel(9);
+        ADCON0bits.CHS3 = 1;
+        ADCON0bits.CHS2 = 0;
+        ADCON0bits.CHS1 = 0;
+        ADCON0bits.CHS0 = 1;
         PIR1bits.ADIF = 0;
     }
     //-------------------- Enviar por I2C -------------------------------------
@@ -69,41 +74,26 @@ void __interrupt() ISR(){
             SSPCONbits.SSPOV = 0;
             SSPCONbits.CKP = 1;
         }
-        if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW){ // Si se quiere escribir en el Slave
-            x = SSPBUF;
-            while(!SSPSTATbits.BF);
-            z = SSPBUF;
-            SSPCONbits.CKP = 1;
+        if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW){     // Escribir al slave
+            x = SSPBUF;                 // Lectura del SSBUF para limpiar el buffer y la bandera BF
+            //__delay_us(2);
+            PIR1bits.SSPIF = 0;         // Limpia bandera de interrupción recepción/transmisión SSP
+            SSPCONbits.CKP = 1;         // Habilita entrada de pulsos de reloj SCL
+            while(!SSPSTATbits.BF);     // Esperar a que la recepción se complete
+            z = SSPBUF;             // Guardar en el PORTD el valor del buffer de recepción
+            PORTA = z;
+            __delay_us(250);
         }
-        else if (!SSPSTATbits.D_nA && SSPSTATbits.R_nW){    // Si se quiere leer del Slave
+        else if (!SSPSTATbits.D_nA && SSPSTATbits.R_nW){    // Leer al slave
             x = SSPBUF;
             SSPSTATbits.BF = 0;
-            if (z == 0x01){
-                x = SSPBUF;
-                SSPBUF = fuerza;
-                SSPCONbits.CKP = 1;
-            }
-            else if (z == 0x02){
-                x = SSPBUF;
-                SSPBUF = luz;
-                SSPCONbits.CKP = 1;
-            }
-//            else if (z == 0x03){
-//                x = SSPBUF;
-//                SSPBUF = angulo;
-//                SSPCONbits.CKP = 1;
-//            }
-            __delay_us(300);
+            SSPBUF = fuerza;
+            SSPCONbits.CKP = 1;
+            __delay_us(250);
             while(SSPSTATbits.BF);
         }
         PIR1bits.SSPIF = 0;
     }
-//    if (ADCON0bits.CHS == 0b1001){
-//        ADCON0bits.CHS = 0b1011;
-//    }
-//    else if (ADCON0bits.CHS == 0b1011){
-//        ADCON0bits.CHS = 0b1001;
-//    }
     ei();
 }
 
@@ -114,60 +104,24 @@ void main(void) {
     adcFoscSel(1);
     analogInSel(9);
     adcInterrupt(1);
+    di();
     i2c_slave_init(0x10);
+    ei();
     while(1){
         //------------------- Iniciar ADC -------------------------------------
         if (ADCON0bits.GO_DONE == 0){
             ADCON0bits.GO_DONE = 1;
-        }
-        //------------------- Obtener valor del ultrasónico -------------------
-//        TMR1H = 0;                // Establece TMR1H como 0.
-//        TMR1L = 0;                // Establece TMR1L como 0.
-//        Trigger = 1;              // Habilitar el trigger para enciar señal
-//        __delay_us(10);           // 10uS Delay 
-//        Trigger = 0;              // TRIGGER LOW para parar señal
-//        while(!Echo);             // Esperando recibir el ECHO (señal rebotada)
-//        T1CONbits.TMR1ON = 1;               // Inicia timer
-//        while(Echo);              // Esperar que ya no se reciba un ECHO.
-//        T1CONbits.TMR1ON = 0;               // Para el timer
-//        //------------------- Cálculo de distancia ----------------------------
-//        distancia = (TMR1L | (TMR1H<<8));
-//        distancia = distancia/29.412;
-//        distancia = distancia + 1;
-//        //-------------------- Funcionamiento de alarma ---------------------
-//        if (distancia <= 100 && distancia >= 50){
-//            PORTBbits.RB3 = 1;
-//            __delay_ms(500);
-//            PORTBbits.RB3 = 0;
-//            __delay_ms(1000);
-//        }
-//        if (distancia <= 49 && distancia >= 21){
-//            PORTBbits.RB3 = 1;
-//            __delay_ms(500);
-//            PORTBbits.RB3 = 0;
-//            __delay_ms(500);
-//        }
-//        if (distancia < 20){
-//            PORTBbits.RB3 = 1;            
-//        }
-        //----------------- Sensor de fuerza ----------------------------------
-        
+        }        
     }
     return;
 }
 
 void setup(void){
-    TRISBbits.TRISB0 = 1;   // Trigger del ultrasónico como salida
-    TRISBbits.TRISB1 = 1;   // Echo del ultrasónico como entrada
-    TRISBbits.TRISB3 = 0;   // Bocina
+    TRISA = 0x00;
+    PORTA = 0x00;
     TRISBbits.TRISB3 = 1;   // Entrada analógica para el sensor de fuerza.
-    TRISBbits.TRISB4 = 1;   // Entrada analógica para la fotoresistencia.
+    TRISBbits.TRISB2 = 1;   // Entrada analógica para la fotoresistencia.
     ANSEL = 0;
     ANSELHbits.ANS9 = 1;
     ANSELHbits.ANS11 = 1;
 }
-
-//void interruptEnable(void){
-//    INTCONbits.GIE = 1;
-//    INTCONbits.PEIE = 1;
-//}
