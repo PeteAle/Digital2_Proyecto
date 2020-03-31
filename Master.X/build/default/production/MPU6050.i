@@ -2780,6 +2780,7 @@ void i2c_masterStop(void);
 void i2c_masterWrite(unsigned char data);
 
 unsigned short i2c_masterRead(unsigned short a);
+void i2c_slave_init(short address);
 # 12 "MPU6050.c" 2
 
 # 1 "./MPU6050.h" 1

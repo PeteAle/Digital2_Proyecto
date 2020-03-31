@@ -45,7 +45,7 @@
 
 unsigned char i = 1;
 uint16_t distancia = 0, acel = 0, gyro = 0;
-uint8_t fuerza = 0, luz = 0;
+uint8_t fuerza = 0, luz = 0, controlador = 0;
 uint16_t Ax = 0, Ay = 0, Az = 0, T = 0, Gx = 0, Gy = 0, Gz = 0;
 
 void setup(void);
@@ -78,6 +78,13 @@ void main(void){
         fuerza = i2c_masterRead(0);
         i2c_masterStop();
         __delay_ms(10);
+        //----------------------- Recibir botones en I2C ----------------------
+        i2c_addr_start(0x41);
+        controlador = i2c_masterRead(0);
+        i2c_masterStop();
+        __delay_ms(10);
+        //----------------------- Activar motores -----------------------------
+        PORTD = controlador;
         //----------------------- Dectector de luz ----------------------------
         if (luz < 5){
             PORTBbits.RB4 = 1;
